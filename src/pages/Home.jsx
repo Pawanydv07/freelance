@@ -5,6 +5,7 @@ import { faBars, faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-ic
 import photo from "../assets/photo.jpg";
 const Home = () => {
   return (
+    <>
     <div className='main flex'>
       <div className='left-half'></div>
       <div className='right-half'>
@@ -24,7 +25,17 @@ const Home = () => {
           </div>
         </div>
       </div>
+    
     </div>
+    <div className='choose'>
+        <div className='choose-us text-center font-bold text-black text-lg mt-10'>
+          <p>Why Choose US</p>
+          <p className='benefits'>BENEFITS OF THIS</p>
+          <p className='courses'>COURSES</p>
+        </div>
+
+        </div>
+    </>
   );
 }
 

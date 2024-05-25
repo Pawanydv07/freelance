@@ -75,3 +75,26 @@
   font-size: 16px;
   cursor: pointer;
 }
+.choose{
+  height: 100vh;
+  width: 100%;
+  border: 2px solid red;
+}
+.choose-us p {
+  letter-spacing: 15px; /* Adjust the value to increase or decrease the gap between characters */
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 800;
+}
+.benefits{
+  font-size: 44px;
+ margin-top: 15px;
+}
+.courses{
+  font-weight: 800;
+  font-style: italic;
+  font-size: 44px;
+  margin-top: 30px;
+  color: rgb(226, 92, 9);
+  letter-spacing: 10px;
+}
+
