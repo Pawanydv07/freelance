@@ -1,100 +1,56 @@
-/* home.css */
-.main {
+/* Home.css */
+.home-container {
   display: flex;
-  height: 100vh;
-}
-
-.left-half,
-.right-half {
-  flex: 1;
-}
-
-.left-half {
-  background-color: #f0f0f0; /* Optional: add background color for distinction */
-}
-
-.right-half {
-  background-color: #cda8a8; /* Optional: add background color for distinction */
+  flex-direction: row; /* Arrange items horizontally */
   position: relative;
 }
-.photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image covers the entire div */
-    position: absolute; /* Positions the image within the div */
-    top: 0;
-    left: 0;
-  }
-.navbar {
-  display: flex;
-  /* justify-content: space-between; */
-  align-items: center;
-  padding: 10px;
-  gap: 15px;
+
+.slider {
+  flex: 1; /* Take up remaining space */
+}
+
+.text {
+  flex: 1; /* Take up remaining space */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for text */
+}
+
+/* Navbar styles */
+nav {
   position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
-  
-  box-sizing: border-box;
-}
-
-.menu {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  margin-left: 40%;
+  background-color: rgba(0, 0, 0, 0); 
+  color: white;
+  padding: 1rem;
+  z-index: 1000; /* Ensure navbar is above other content */
 }
 
-.hamburger {
+.navbar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-links ul {
   display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-left: 5px;
+  list-style: none;
 }
 
-.line {
-  height: 1px;
-  background-color: rgb(36, 24, 24);
+.navbar-links ul li {
+  margin-left: 1rem;
 }
 
-.line.small {
-  width: 15px;
+.navbar-links ul li a {
+  text-decoration: none;
+  color: white;
 }
 
-.line.big {
-  width: 25px;
-  margin-left: -10px;
+.navbar-links ul li a:hover {
+  color: #ccc;
 }
-
-.icons-right {
-  display: flex;
-  gap: 15px;
-}
-
-.icon {
-  font-size: 16px;
-  cursor: pointer;
-}
-.choose{
-  height: 100vh;
-  width: 100%;
-  border: 2px solid red;
-}
-.choose-us p {
-  letter-spacing: 15px; /* Adjust the value to increase or decrease the gap between characters */
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-weight: 800;
-}
-.benefits{
-  font-size: 44px;
- margin-top: 15px;
-}
-.courses{
-  font-weight: 800;
-  font-style: italic;
-  font-size: 44px;
-  margin-top: 30px;
-  color: rgb(226, 92, 9);
-  letter-spacing: 10px;
-}
-
