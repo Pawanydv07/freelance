@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "../components/Slider";
-import "../css/Home.css"
+import "../css/home.css"
 import sliderimage1 from "../assets/photo1.jpg";
 import sliderimage2 from "../assets/photo2.jpg";
 import sliderimage3 from "../assets/photo3.jpg";
