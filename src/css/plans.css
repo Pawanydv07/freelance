@@ -1,0 +1,29 @@
+.main-container{
+    height: 120vh;
+    width: 100%;
+    border: 2px solid green;
+}
+
+/* plans.css */
+/* plans.css */
+.plan-text{
+    font-family: 'Times New Roman', Times, serif;
+}
+.gradient-text {
+    background: linear-gradient(90deg, #ff887d, #ffaa80);
+    -webkit-background-clip: text;
+    font-size: 54px;
+    letter-spacing: 10px;
+font-family: 'Times New Roman', Times, serif;
+    background-clip: text;
+    color: transparent;
+    transition: background 0.5s ease-in-out;
+  }
+  .choose-1{
+    width: 25%;
+    height: 100vh;
+    
+  }
+  
+  
+  
