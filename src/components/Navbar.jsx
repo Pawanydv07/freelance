@@ -20,22 +20,22 @@ export const Navbar = () => {
       </div>
       <ul className={menuOpen ? "open" : ""}>
         <li>
-          <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>HOME</NavLink>
+          <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : '')}>HOME</NavLink>
         </li>
         <li>
-          <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>PAGES</NavLink>
+          <NavLink to="/services" className={({ isActive }) => (isActive ? 'active' : '')}>PAGES</NavLink>
         </li>
         <li>
-          <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>CLASSES</NavLink>
+          <NavLink to="/contact" className={({ isActive }) => (isActive ? 'active' : '')}>CLASSES</NavLink>
         </li>
         <li>
-          <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>COURSES</NavLink>
+          <NavLink to="/contact" className={({ isActive }) => (isActive ? 'active' : '')}>COURSES</NavLink>
         </li>
         <li>
-          <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>INSTRUCTOR</NavLink>
+          <NavLink to="/contact" className={({ isActive }) => (isActive ? 'active' : '')}>INSTRUCTOR</NavLink>
         </li>
         <li>
-          <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>BLOG</NavLink>
+          <NavLink to="/contact" className={({ isActive }) => (isActive ? 'active' : '')}>BLOG</NavLink>
         </li>
         <li>
           <NavLink to="/contact" className={({ isActive }) => (isActive ? 'active' : '')}>CONTACT US</NavLink>
