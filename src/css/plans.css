@@ -1,5 +1,5 @@
 .main-container{
-    height: 120vh;
+    height: 200vh;
     width: 100%;
     border: 2px solid green;
 }
@@ -21,8 +21,15 @@ font-family: 'Times New Roman', Times, serif;
   }
   .choose-1{
     width: 25%;
-    height: 100vh;
+    height: 120vh;
+    border-radius: 15px;
+    transition: background 2s ease-in-out;
+    background-color: white;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
     
+  }
+  .choose-1:hover {
+    background: linear-gradient(to bottom,#e79f6c 0%,rgb(255, 186, 129) 10%, #e18256 50%,#da6d5c 100% );
   }
   
   
