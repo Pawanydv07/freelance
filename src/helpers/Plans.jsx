@@ -19,8 +19,24 @@ const Plans = () => {
             </button>
           </div>
         </div>
-        <div className="choose-1 border-2 border-gray-900"></div>
-        <div className="choose-1 border-2 border-gray-900"></div>
+        <div className="choose-1 border-2 border-gray-900">
+        <div className="icons-div border-2 border-gray-900"></div>
+          <div className="plan-content"></div>
+          <div className="plan-button w-full">
+            <button className="plan-btn">
+              Purchase Plan
+            </button>
+          </div>
+        </div>
+        <div className="choose-1 border-2 border-gray-900">
+        <div className="icons-div border-2 border-gray-900"></div>
+          <div className="plan-content"></div>
+          <div className="plan-button w-full">
+            <button className="plan-btn">
+              Purchase Plan
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
