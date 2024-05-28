@@ -1,8 +1,8 @@
 import React from 'react';
-import '../css/TwoColumnComponent.css';
-import img from '../assets/image.png';
+import "../../css/Home/HomeP3.css";
+import img from '../../assets/image.png';
 
-const TwoColumnComponent = () => {
+const HomeP3 = () => {
   return (
     <div className="two-column-container">
       <div className="left-column">
@@ -19,4 +19,4 @@ const TwoColumnComponent = () => {
   );
 };
 
-export default TwoColumnComponent;
+export default HomeP3;

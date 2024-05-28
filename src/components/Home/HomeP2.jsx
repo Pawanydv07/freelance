@@ -1,9 +1,9 @@
 import React from 'react';
-import '../css/InfoBoxes.css';
+import "../../css/Home/HomeP2.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee, faAppleAlt, faLeaf, faBook } from '@fortawesome/free-solid-svg-icons';
 
-const InfoBoxes = () => {
+const HomeP2 = () => {
   const boxes = [
     { icon: faCoffee, heading: 'Quality Coffee', text: 'Enjoy the best coffee in town, freshly brewed and served with a smile.' },
     { icon: faAppleAlt, heading: 'Fresh Fruits', text: 'Our fruits are always fresh, providing you with the best nutrition.' },
@@ -33,4 +33,4 @@ const InfoBoxes = () => {
   );
 };
 
-export default InfoBoxes;
+export default HomeP2;
