@@ -1,12 +1,22 @@
 /* Home.css */
 .home-container {
+  width: 100%;
   display: flex;
-  flex-direction: row; /* Arrange items horizontally */
-  position: relative;
+  flex-direction: column;
+  align-items: center;
 }
 
 .slider {
   flex: 1; /* Take up remaining space */
+}
+
+.slider-container {
+  width: 100%;
+}
+
+.info-boxes-container {
+  width: 100%;
+  margin-top: 2rem; /* Space between slider and info boxes */
 }
 
 .text {
