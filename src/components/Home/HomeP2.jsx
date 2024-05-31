@@ -14,8 +14,8 @@ const HomeP2 = () => {
   return (
     <div className="info-boxes-container">
       <h1 className="heading">
-        <span className="first-part">Our</span><br />
-        <span className="second-part">Features</span>
+        {/* <span className="first-part">Our</span><br /> */}
+        {/* <span className="second-part">Features</span> */}
       </h1>
       <div className="boxes">
         {boxes.map((box, index) => (

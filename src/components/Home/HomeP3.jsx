@@ -6,7 +6,7 @@ const HomeP3 = () => {
   return (
     <div className="two-column-container">
       <div className="left-column">
-        <h2 className="heading">Left Side Heading</h2>
+        {/* <h2 className="heading">Left Side Heading</h2> */}
         <p className="description">
           Some description goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet semper libero, in volutpat justo lacinia id.
         </p>
