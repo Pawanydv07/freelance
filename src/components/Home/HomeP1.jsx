@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "../css/Slider.css";
+import "../../css/Home/HomeP1.css";
 
-const Slider = ({ slides }) => {
+const HomeP1 = ({ slides }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
@@ -9,7 +9,9 @@ const Slider = ({ slides }) => {
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide - 1 + slides.length) % slides.length);
+    setCurrentSlide(
+      (prevSlide) => (prevSlide - 1 + slides.length) % slides.length
+    );
   };
 
   const splitTextEqually = (text) => {
@@ -30,16 +32,24 @@ const Slider = ({ slides }) => {
       <div className="text">
         <h2>{slide.title}</h2>
         <h1>
-          <span className="first-part">{firstPart}</span>
+          <span className="first-part">{firstPart}</span><br/>
           <span className="second-part">{secondPart}</span>
         </h1>
         <p>{slide.description}</p>
       </div>
-      <img src={slide.image} alt={`Slide ${currentSlide + 1}`} className="slide-image" />
-      <button onClick={prevSlide} className="prev">&#10094;</button>
-      <button onClick={nextSlide} className="next">&#10095;</button>
+      <img
+        src={slide.image}
+        alt={`Slide ${currentSlide + 1}`}
+        className="slide-image"
+      />
+      <button onClick={prevSlide} className="prev">
+        &#10094;
+      </button>
+      <button onClick={nextSlide} className="next">
+        &#10095;
+      </button>
     </div>
   );
 };
 
-export default Slider;
+export default HomeP1;

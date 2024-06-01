@@ -1,6 +1,6 @@
 import React from "react";
-import "../css/student.css";
-const StudentTestimonials = () => {
+import "../../css/Home/HomeP9.css";
+const HomeP9 = () => {
   return (
     <div className="student-main">
       <div className="student-choose text-center">
@@ -16,4 +16,4 @@ const StudentTestimonials = () => {
   );
 };
 
-export default StudentTestimonials;
+export default HomeP9;

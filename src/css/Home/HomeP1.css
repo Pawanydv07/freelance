@@ -1,0 +1,114 @@
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 1000px;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+}
+
+.text {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center text vertically within the container */
+  text-align: left; /* Left-align text inside the container */
+  margin: 0px 50px;
+}
+
+.text h1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.text h1 .first-part {
+  color: #000;
+}
+
+.text h1 .second-part {
+  color: #FE9B7E;
+}
+
+.text h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.text p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.slide-image {
+  flex: 1;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-image img {
+  height: 100%;
+  width: auto;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.next {
+  right: 10px;
+}
+
+.prev {
+  left: 10px;
+}
+
+.prev i, .next i {
+  font-size: 24px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .slider-container {
+    height: auto; /* Allow height to adjust based on content */
+    flex-direction: column; /* Stack items vertically */
+    padding-top: 60px; /* Adjust padding-top to create space for the navbar */
+  }
+
+  .slide-image {
+    display: none; /* Hide the image in mobile view */
+  }
+
+  .text {
+    text-align: left; /* Keep text aligned to the left in mobile view */
+    align-items: center; /* Center the text container horizontally */
+  }
+
+  .text h1 {
+    font-size: 32px; /* Adjust font size for mobile */
+  }
+
+  .text h2 {
+    font-size: 20px; /* Adjust font size for mobile */
+  }
+
+  .text p {
+    font-size: 14px; /* Adjust font size for mobile */
+  }
+
+  .prev, .next {
+    bottom: 20px; /* Adjust position for navigation buttons */
+  }
+}

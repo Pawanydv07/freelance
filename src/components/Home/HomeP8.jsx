@@ -1,7 +1,7 @@
 import React from "react";
-import "../css/plans.css";
-import icons from "../assets/icons.jpg";
-const Plans = () => {
+import "../../css/Home/HomeP8.css";
+// import icons from "../../assets/icons.jpg";
+const HomeP8 = () => {
   return (
     <div className="main-container justify-center relative">
       <div className="text-center">
@@ -42,4 +42,4 @@ const Plans = () => {
   );
 };
 
-export default Plans;
+export default HomeP8;
