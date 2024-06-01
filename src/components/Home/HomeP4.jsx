@@ -38,7 +38,7 @@ const HomeP4 = () => {
             <div className="course-label">{course.mode}</div>
             <img src={img} alt={course.title} className="image" />
             <div className="course-content">
-              <h2>{course.title}</h2>
+              <h2 className='title-react'>{course.title}</h2>
               <p>{course.description}</p>
               <div className="course-rating">
                 <div className="rating-number">{course.rating.toFixed(1)}</div>

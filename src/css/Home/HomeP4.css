@@ -6,28 +6,30 @@
 }
 
 .heading {
-  font-size: 2.5em;
+  font-size: 1em;
   margin-bottom: 20px;
   color: #333;
 }
 
 .heading .first-part {
-  font-size:  38px;
+  font-size:  18px;
 }
 
 .heading .second-part {
-  font-size:  48px;
-  font-weight: bold;
+  font-size:  18px;
+  font-weight: 400;
 }
 
 .heading .third-part {
-  font-size: 48px;
+  font-size: 18px;
 }
 
 .courses {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  font-size: 1em;
+  font-family:'Courier New', Courier, monospace
 }
 
 .course-box {
@@ -55,7 +57,7 @@
   color: #fff;
   padding: 5px 10px;
   border-radius: 5px;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 
 .image {
@@ -66,10 +68,13 @@
 
 .course-content {
   padding: 20px;
+  font-size: 1em;
+  color: #FE7B7E;
 }
 
+
 .course-box h2 {
-  font-size: 1.5em;
+  font-size: 1em;
   margin-top: 15px;
   color: #333;
 }
@@ -149,4 +154,8 @@
 
 .details-button:hover {
   background: #FE7B7E;
+}
+.title-react{
+  color: #FE7B7E;
+  font-style: 19px;
 }

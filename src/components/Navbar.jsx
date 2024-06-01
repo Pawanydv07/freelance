@@ -16,7 +16,10 @@ export const Navbar = () => {
   return (
     <nav className={isSticky ? "sticky" : ""}>
       <Link to="/" className="title">
-        <img src={logo} alt="Website Logo" className="logo" />
+        {/* <img src={logo} alt="Website Logo" className="logo" /> */}
+        <h1 className="name">Logical
+          <span className="sir">Sir</span>
+        </h1>
       </Link>
       <div className="menu" onClick={toggleMenu}>
         {menuOpen ? <FaTimes /> : <FaEllipsisV />}
