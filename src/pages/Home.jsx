@@ -14,6 +14,7 @@ import HomeP6 from "../components/Home/HomeP6";
 import HomeP7 from "../components/Home/HomeP7";
 import HomeP8 from "../components/Home/HomeP8";
 import HomeP9 from "../components/Home/HomeP9";
+import HomeP10 from "../components/Home/HomeP10";
 
 export const Home = () => {
   const slides = [
@@ -43,12 +44,13 @@ export const Home = () => {
       <HomeP1 slides={slides} />
       <HomeP2 />
       <HomeP3 />
-      <HomeP4 />
-      <HomeP5 />
-      <HomeP6 />
-      <HomeP7 />
-      <HomeP8 />
-      <HomeP9 />
+      <HomeP4/>
+      <HomeP5/>
+      <HomeP6/>
+      <HomeP7/>
+      <HomeP8/>
+      <HomeP9/>
+      <HomeP10/>
     </div>
   );
 };

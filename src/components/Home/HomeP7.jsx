@@ -16,10 +16,11 @@ const UpcomingEvents = () => {
   return (
     <div className="upcoming-events-container">
       {/* <h1 className="heading">Upcoming Events</h1> */}
-      <div className="events-wrapper ">
+      <div className="events-wrapper">
         {events.map((event) => (
           <div key={event.id} className="event-box">
             <div className="event-image-container">
+            <button className="register-button">Register</button>
               <img
                 src={event.image}
                 alt={event.name}
@@ -29,7 +30,7 @@ const UpcomingEvents = () => {
             <div className="event-details">
               <h2 className="event-name">{event.name}</h2>
               <div className="event-price">{event.price}</div>
-              <button className="register-button">Register</button>
+              
             </div>
           </div>
         ))}

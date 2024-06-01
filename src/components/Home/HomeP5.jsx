@@ -9,7 +9,7 @@ const CinematicCircles = () => {
         <source src={backgroundVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div className="background-overlay"></div>
+      <div className="background-overlay"></div> {/* Overlay element */}
       
       <div className="content">
         <h1 className="heading">Guide To The World Of Digitalization</h1>

@@ -21,15 +21,15 @@
 
 /* Add overlay */
 .background-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(254, 155, 126, 0.5); /* Orange color with 50% opacity */
-  z-index: -1; /* Ensure the overlay is above the video but below the content */
-}
-
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(254, 155, 126, 0.5); /* Orange color with 50% opacity */
+    z-index: -1; /* Ensure the overlay is above the video but below the content */
+  }
+  
 .content {
   position: relative;
   text-align: left;
@@ -102,46 +102,4 @@
 
 .circle-4:hover .circle {
   transform: scale(1.5) translateX(10px);
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .heading {
-    position: static;
-    font-size: 2em;
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  .circles-container {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    gap: 20px;
-  }
-
-  .circle-item {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .circle {
-    width: 80px;
-    height: 80px;
-    font-size: 1.5em;
-  }
-
-  .circle-text {
-    margin-left: 0;
-    margin-top: 10px;
-    font-size: 24px;
-  }
-
-  /* Disable hover effects on mobile */
-  .circle-1:hover .circle,
-  .circle-2:hover .circle,
-  .circle-3:hover .circle,
-  .circle-4:hover .circle {
-    transform: none;
-  }
 }

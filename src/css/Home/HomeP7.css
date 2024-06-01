@@ -18,18 +18,24 @@
   }
   
   .register-button {
-    padding: 10px 20px;
+    width: 100px; /* Adjust width to desired size */
+    height: 100px; /* Make height equal to width */
     background-color: #FE9B7E;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 1em; /* Adjust font size to fit in the box */
     position: absolute;
-    bottom: 10px; /* Adjust to overlap the image */
-    right: -10px; /* Adjust to overlap the image */
+    bottom: 40px; /* Adjust to overlap the image */
+    right: -50px; /* Adjust to overlap the image */
     z-index: 1; /* Ensure button is above the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
+  
   
   .event-details {
     flex: 1;
