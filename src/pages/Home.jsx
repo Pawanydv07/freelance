@@ -8,6 +8,12 @@ import "../css/Home/Home.css";
 import HomeP1 from "../components/Home/HomeP1";
 import HomeP2 from "../components/Home/HomeP2";
 import HomeP3 from "../components/Home/HomeP3";
+import HomeP4 from "../components/Home/HomeP4";
+import HomeP5 from "../components/Home/HomeP5";
+import HomeP6 from "../components/Home/HomeP6";
+import HomeP7 from "../components/Home/HomeP7";
+import HomeP8 from "../components/Home/HomeP8";
+import HomeP9 from "../components/Home/HomeP9";
 
 export const Home = () => {
   const slides = [
@@ -37,6 +43,12 @@ export const Home = () => {
       <HomeP1 slides={slides} />
       <HomeP2 />
       <HomeP3 />
+      <HomeP4 />
+      <HomeP5 />
+      <HomeP6 />
+      <HomeP7 />
+      <HomeP8 />
+      <HomeP9 />
     </div>
   );
 };
