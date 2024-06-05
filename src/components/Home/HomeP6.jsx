@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../css/Home/HomeP6.css";
+import '../../css/Home/HomeP6.css'; // Import the CSS file for styling
 
 // Assuming images are placed in `../../assets` directory
 import photo1 from '../../assets/photo1.jpg';
@@ -14,29 +14,31 @@ const HoverImageComponent = () => {
   ];
 
   return (
-    <div className="hover-image-container">
-      <div className="description-container">
-        {/* <h1 className="heading">Our Exciting Projects</h1> */}
-        <h2 className="sub-heading">Explore Our Portfolio</h2>
-        <p className="description">Explore our diverse range of projects that showcase our expertise and innovation. Hover over each image to see the transformation and discover more about what we do.</p>
-        <button className="book-class-button">Book Class</button>
-      </div>
-      <div className="image-boxes-container">
-        {projects.map((project) => (
-          <div key={project.id} className="image-box">
-            <img
-              src={project.defaultImage}
-              alt={project.title}
-              className="default-image"
-            />
-            <img
-              src={project.hoverImage}
-              alt={project.title}
-              className="hover-image"
-            />
-            <div className="project-title">{project.title}</div>
-          </div>
-        ))}
+    <div className="component-container">
+      {/* <h1 className="component-heading">Our Exciting Projects</h1> */}
+      <div className="hover-image-container">
+        <div className="description-container">
+          <h2 className="sub-heading">Explore Our Portfolio</h2>
+          <p className="description">Explore our diverse range of projects that showcase our expertise and innovation. Hover over each image to see the transformation and discover more about what we do.</p>
+          <button className="book-class-button">Book Class</button>
+        </div>
+        <div className="image-boxes-container">
+          {projects.map((project) => (
+            <div key={project.id} className="image-box">
+              <img
+                src={project.defaultImage}
+                alt={project.title}
+                className="default-image"
+              />
+              <img
+                src={project.hoverImage}
+                alt={project.title}
+                className="hover-image"
+              />
+              <div className="project-title">{project.title}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

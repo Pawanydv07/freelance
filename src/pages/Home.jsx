@@ -12,7 +12,7 @@ import HomeP4 from "../components/Home/HomeP4";
 import HomeP5 from "../components/Home/HomeP5";
 import HomeP6 from "../components/Home/HomeP6";
 import HomeP7 from "../components/Home/HomeP7";
-import HomeP8 from "../components/Home/HomeP8";
+import HomeP11 from "../components/Home/HomeP11";
 import HomeP9 from "../components/Home/HomeP9";
 import HomeP10 from "../components/Home/HomeP10";
 
@@ -48,7 +48,7 @@ export const Home = () => {
       <HomeP5/>
       <HomeP6/>
       <HomeP7/>
-      <HomeP8/>
+      <HomeP11/>
       <HomeP9/>
       <HomeP10/>
     </div>
