@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../css/Home/HomeP7.css";
+import '../../css/Home/HomeP7.css'; // Import the CSS file for styling
 
 // Assuming images are placed in `../../assets` directory
 import event1 from '../../assets/photo3.jpg';
@@ -15,12 +15,12 @@ const UpcomingEvents = () => {
 
   return (
     <div className="upcoming-events-container">
-      {/* <h1 className="heading">Upcoming Events</h1> */}
+      <h1 className="component-heading">Upcoming Events</h1>
       <div className="events-wrapper">
         {events.map((event) => (
           <div key={event.id} className="event-box">
             <div className="event-image-container">
-            <button className="register-button">Register</button>
+              <button className="register-button">Register</button>
               <img
                 src={event.image}
                 alt={event.name}
@@ -30,7 +30,6 @@ const UpcomingEvents = () => {
             <div className="event-details">
               <h2 className="event-name">{event.name}</h2>
               <div className="event-price">{event.price}</div>
-              
             </div>
           </div>
         ))}

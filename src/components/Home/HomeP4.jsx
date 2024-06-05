@@ -22,12 +22,11 @@ const HomeP4 = () => {
 
   return (
     <div className="courses-container">
-      {/* <h1 className="heading">
+      <h1 className="component-heading">
         <span className="first-part">Our</span><br />
         <span className="second-part">Professional</span><br />
         <span className="third-part">Classes</span>
-      </h1> */}
-      
+      </h1>
       <div className="courses">
         {[
           { title: "Introduction to React.js", description: "Begin your journey with React.js. This course covers the fundamentals of React, guiding you through the process of building your first React applications.", mode: "Online", rating: 4.5 },

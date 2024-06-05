@@ -1,0 +1,129 @@
+/* HomeP11.css */
+
+.news-section {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.news-section-title {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #FE9B7E;
+}
+
+.news-container {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.news-box {
+    width: 48%;
+    margin-bottom: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(241, 85, 85, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+}
+
+.news-image-container {
+    flex-shrink: 0;
+    width: 50%;
+}
+
+.news-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.news-content {
+    padding: 20px;
+    width: 50%;
+    position: relative;
+    z-index: 2; /* Ensure the text container appears over the curtain */
+}
+
+.news-title {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    color: #333; /* Default text color */
+}
+
+.news-read-more {
+    color: #551503;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Pseudo-element for hover effect */
+.news-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 100%; /* Initial position off-screen */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(240, 47, 47, 0.3); /* Semi-transparent background */
+    transition: left 0.3s ease-in-out; /* Transition effect */
+    z-index: 1;
+}
+
+/* Hover effect */
+.news-box:hover .news-content::after {
+    left: 0; /* Move the curtain in */
+}
+
+/* Adjust text color and background when curtain effect is applied */
+.news-box:hover .news-title {
+    color: #ffffff; /* Change text color to white */
+    background-color: rgba(0, 0, 0, 0.7); /* Deeper background color for better contrast */
+    padding: 10px;
+}
+
+/* Zooming effect for "Read More" on hover */
+.news-box .news-read-more {
+    transition: transform 0.2s ease-in-out; /* Transition effect */
+}
+
+.news-box:hover .news-read-more {
+    transform: scale(1.1); /* Zoom in on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .news-box {
+        width: 48%;
+    }
+}
+
+@media (max-width: 768px) {
+    .news-box {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-section-title {
+        font-size: 2em;
+    }
+    .news-content {
+        padding: 15px;
+    }
+    .news-title {
+        font-size: 1.4em;
+    }
+    .news-read-more {
+        font-size: 0.9em;
+    }
+}

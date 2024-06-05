@@ -1,45 +1,72 @@
-import React from "react";
+import React, { useState } from 'react';
 import "../../css/Home/HomeP10.css";
-// import icons from "../../assets/icons.jpg";
-const HomeP10 = () => {
+import { FaCheck, FaStar } from 'react-icons/fa'; // Example icons
+
+const PlanComponent = () => {
+  const [billingCycle, setBillingCycle] = useState('monthly');
+
+  const handleBillingCycleChange = (cycle) => {
+    setBillingCycle(cycle);
+  };
+
+  const plans = [
+    {
+      name: 'Basic Plan',
+      priceMonthly: '$10/mo',
+      priceYearly: '$100/yr',
+      features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5', 'Feature 6'],
+      icon: <FaCheck />,
+    },
+    {
+      name: 'Pro Plan',
+      priceMonthly: '$20/mo',
+      priceYearly: '$200/yr',
+      features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5', 'Feature 6'],
+      icon: <FaStar />,
+    },
+    {
+      name: 'Premium Plan',
+      priceMonthly: '$30/mo',
+      priceYearly: '$300/yr',
+      features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5', 'Feature 6'],
+      icon: <FaStar />,
+    },
+  ];
+
   return (
-    <div className="main-container justify-center relative">
-      <div className="text-center">
-        <h1 className="text-6xl font-bold plan-text">
-          Choose <span className="gradient-text">Your Plan</span>
-        </h1>
+    <div className="plan-section">
+      <div className="billing-buttons">
+        <button
+          className={billingCycle === 'monthly' ? 'active' : ''}
+          onClick={() => handleBillingCycleChange('monthly')}
+        >
+          Monthly
+        </button>
+        <button
+          className={billingCycle === 'yearly' ? 'active' : ''}
+          onClick={() => handleBillingCycleChange('yearly')}
+        >
+          Yearly
+        </button>
       </div>
-      <div className="flex gap-16 justify-center mt-10">
-        <div className="choose-1 border-2 border-gray-900">
-          <div className="icons-div border-2 border-gray-900"></div>
-          <div className="plan-content"></div>
-          <div className="plan-button w-full">
-            <button className="plan-btn">
-              Purchase Plan
-            </button>
+      <div className="plan-container">
+        {plans.map((plan, index) => (
+          <div key={index} className={`plan-box ${index === 1 ? 'plan-box-middle' : ''}`}>
+            <div className="plan-icon">{plan.icon}</div>
+            <h2 className="plan-name">{plan.name}</h2>
+            <p className="plan-price">
+              {billingCycle === 'monthly' ? plan.priceMonthly : plan.priceYearly}
+            </p>
+            <ul className="plan-features">
+              {plan.features.map((feature, i) => (
+                <li key={i}>{feature}</li>
+              ))}
+            </ul>
           </div>
-        </div>
-        <div className="choose-1 border-2 border-gray-900">
-        <div className="icons-div border-2 border-gray-900"></div>
-          <div className="plan-content"></div>
-          <div className="plan-button w-full">
-            <button className="plan-btn">
-              Purchase Plan
-            </button>
-          </div>
-        </div>
-        <div className="choose-1 border-2 border-gray-900">
-        <div className="icons-div border-2 border-gray-900"></div>
-          <div className="plan-content"></div>
-          <div className="plan-button w-full">
-            <button className="plan-btn">
-              Purchase Plan
-            </button>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default HomeP10;
+export default PlanComponent;
