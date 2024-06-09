@@ -1,22 +1,27 @@
 .plan-section {
+  width: 100%;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
+  background-color: #f9f9f9; /* Light background for contrast */
 }
 
 .billing-buttons {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .billing-buttons button {
-  padding: 10px 20px;
+  padding: 15px 25px;
   margin: 0 10px;
   border: none;
+  border-radius: 5px;
   background-color: #ddd;
+  color: #333;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 1.2em;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .billing-buttons button.active,
@@ -27,7 +32,7 @@
 
 .plan-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
   max-width: 1200px;
 }
@@ -35,42 +40,62 @@
 .plan-box {
   background: white;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 10px;
   width: 30%;
-  padding: 20px;
+  padding: 30px;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  margin-top: 40px;
 }
 
 .plan-box-middle {
-  margin-top: 20px;
+  margin-top: 0; /* Make the middle box lower */
 }
 
 .plan-box:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .plan-icon {
-  font-size: 2em;
-  margin-bottom: 10px;
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  color: #007bff; /* Icon color */
 }
 
 .plan-name {
-  font-size: 1.5em;
-  margin-bottom: 10px;
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #333;
 }
 
 .plan-price {
-  font-size: 1.2em;
-  margin-bottom: 20px;
+  font-size: 1.6em;
+  margin-bottom: 25px;
+  color: #FE9B7E; /* Price color */
 }
 
 .plan-features {
   list-style-type: none;
   padding: 0;
+  font-size: 1.1em;
+  color: #555;
 }
 
 .plan-features li {
   margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.plan-features li::before {
+  content: '✓'; /* Checkmark before each feature */
+  color: #FE9B7E;
+  margin-right: 10px;
+}
+
+.plan-features li:last-child {
+  margin-bottom: 0;
 }
