@@ -3,6 +3,7 @@ import "./App.css";
 
 import { Navbar } from "./components/Navbar";
 import { About, Contact, Home, Services } from "./pages";
+import CoursePage from "./pages/CousePage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/courses"element={<CoursePage/>}/>
       </Routes>
     </div>
   );
