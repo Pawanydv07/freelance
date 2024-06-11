@@ -35,6 +35,12 @@ const PlanComponent = () => {
 
   return (
     <div className="plan-section">
+      <div className="student-choose text-center">
+        <p className="font-bold text-lg student-text">Our Plans</p>
+        <h1 className="text-5xl student-div">
+          CHOOSE YOUR PLAN <span className="gradient-text text-lg"></span>
+        </h1>
+      </div>
       <div className="billing-buttons">
         <button
           className={billingCycle === 'monthly' ? 'active' : ''}

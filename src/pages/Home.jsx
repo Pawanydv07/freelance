@@ -15,7 +15,7 @@ import HomeP7 from "../components/Home/HomeP7";
 import HomeP11 from "../components/Home/HomeP11";
 import HomeP9 from "../components/Home/HomeP9";
 import HomeP10 from "../components/Home/HomeP10";
-
+import Footer1 from "../components/Home/Footer1";
 export const Home = () => {
   const slides = [
     {
@@ -51,6 +51,7 @@ export const Home = () => {
       <HomeP11/>
       <HomeP9/>
       <HomeP10/>
+      <Footer1/> 
     </div>
   );
 };

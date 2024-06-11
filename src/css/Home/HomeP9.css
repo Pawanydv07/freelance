@@ -33,6 +33,7 @@
     align-items: center;
     padding: 20px;
     background-color: #eeaf9c;
+    height: 80vh; /* Increased height */
 }
 
 .testimonial-half {
