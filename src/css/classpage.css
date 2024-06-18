@@ -1,0 +1,70 @@
+.main{
+    width: 100%;
+    height: 200vh;
+    border: 2px solid red;
+    margin-top: 10%;
+}
+.classhero{
+    width: 100%;
+    height: 70vh;
+    border: 2px solid green;
+}
+.classMain{
+    width: 70%;
+    height: 60vh;
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 15%;
+    margin-top: 17%;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.main-content{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2%;
+}
+.main-content-2{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2%;
+  
+}
+
+.featured{
+    width: 15%;
+    height: 7vh;
+    border: 2px solid red;
+    background-color: rgba(254,199,131,255);
+    border-radius: 10px;
+    display:flex;
+    align-items: center;
+    margin-right: 50%;
+   margin-top: 2%;
+   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+   
+
+}
+.featured .star {
+    color: black; 
+    margin-left: 10%;
+}
+
+.featured .featured-text {
+   font-weight: 700;
+   margin-left: 2%;
+
+  
+ 
+}
+.badge{
+    width: 20%;
+    height: 10vh;
+    border-radius: 50%;
+    background-color: white;
+   
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
