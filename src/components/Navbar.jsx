@@ -38,7 +38,7 @@ export const Navbar = () => {
           <NavLink to="/instructor" activeClassName="active">INSTRUCTOR</NavLink>
         </li>
         <li>
-          <NavLink to="/blog" activeClassName="active">BLOG</NavLink>
+          <NavLink to="/quiz" activeClassName="active">QUIZ</NavLink>
         </li>
         <li>
           <NavLink to="/contact" activeClassName="active">CONTACT US</NavLink>

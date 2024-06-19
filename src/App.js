@@ -3,8 +3,9 @@ import "./App.css";
 
 import { Navbar } from "./components/Navbar";
 import { About, Contact, Home, Services } from "./pages";
-import CoursePage from "./pages/CousePage";
+import CoursePage from "./pages/CoursesPage";
 import ClassPage from "./pages/ClassPage";
+import QuizPage from "./pages/QuizPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/courses"element={<CoursePage/>}/>
         <Route path="/classes"element={<ClassPage/>}/>
+        <Route path="/quiz"element={<QuizPage/>}/>
       </Routes>
     </div>
   );
