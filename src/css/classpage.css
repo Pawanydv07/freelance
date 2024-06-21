@@ -223,7 +223,7 @@
   }
   .class-content{
     width: 100%;
-    height: 100vh;
+    height: 150vh;
     border: 2px solid green;
   
   }
@@ -237,18 +237,64 @@
    
   }
   .nav-content{
-    width: 65%;
-    height: 70px;
+    width: 70%;
+    height: 100%;
     border: 2px solid red;
     margin-left: 10px;
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-evenly;
+   
+    
     
   }
-  .photo-class{
-    width: 30%;
-    height: 90vh;
-    border: 5px solid yellow;
-    margin-left: 10px;
+  .navlinks{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-evenly;
+    border: 2px solid red;
   }
+  .photo-class {
+    position: relative;
+    display: inline-block;
+   width: 35%;
+   height: 100%;
+   border: 2px solid red;
+   margin-left: 10%;
+   text-align: center;
+   color: white;
+   border-radius: 20px;
+   
+
+  }
+  
+  .photo-class .feat {
+    font-size: 26px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 3%;
+    letter-spacing: 5px;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .photo-class .feat:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('../assets/4835.jpg'); /* Replace with your image path */
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.8; /* Adjust opacity as needed */
+  }
+  
+  .photo-class .feat span {
+    position: relative;
+    z-index: 1;
+    background-color: white; /* Adjust background color as needed */
+    padding: 10px; /* Adjust padding as needed */
+  }
+  

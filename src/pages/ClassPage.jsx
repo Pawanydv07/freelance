@@ -1,44 +1,10 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import React, { useState } from "react";
 import "../css/classpage.css";
 import degree from "../assets/degree.png";
 import badge from "../assets/badge.png";
 import hero from "../assets/herosection.jpg";
 import background from "../assets/28147.jpg";
 import person from "../assets/64730.jpg";
-
-// Navbar Component
-function Navbar() {
-  return (
-    <nav className="bg-white p-4 shadow-md">
-      <ul className="flex space-x-4">
-        <li>
-          <Link to="/courses" className="text-gray-600 hover:text-gray-900">
-            Courses
-          </Link>
-        </li>
-        <li>
-          <Link to="/about" className="text-gray-600 hover:text-gray-900">
-            About
-          </Link>
-        </li>
-        <li>
-          <Link to="/accessories" className="text-gray-600 hover:text-gray-900">
-            Accessories
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/learning-outcome"
-            className="text-gray-600 hover:text-gray-900"
-          >
-            Learning Outcome
-          </Link>
-        </li>
-      </ul>
-    </nav>
-  );
-}
 
 // CourseInfo Component
 function CourseInfo() {
@@ -89,16 +55,33 @@ function About() {
   return <div>About Page</div>;
 }
 
-function Accessories() {
-  return <div>Accessories Page</div>;
+function Faculty() {
+  return <div>Faculty Page</div>;
 }
 
-function LearningOutcome() {
-  return <div>Learning Outcome Page</div>;
+function Info() {
+  return <div>Info Page</div>;
 }
 
 // Main ClassPage Component
 const ClassPage = () => {
+  const [activeSection, setActiveSection] = useState("about");
+
+  const renderContent = () => {
+    switch (activeSection) {
+      case "courses":
+        return <Courses />;
+      case "about":
+        return <About />;
+      case "faculty":
+        return <Faculty />;
+      case "info":
+        return <Info />;
+      default:
+        return <About />;
+    }
+  };
+
   return (
     <div className="main h-full w-full">
       <div className="classhero">
@@ -162,16 +145,17 @@ const ClassPage = () => {
       <div className="class-content">
         <div className="main-class">
           <div className="nav-content">
-           <Link to='about'>Courses</Link>
-           <Link to='about'>About</Link>
-           <Link to='about'>Features</Link>
-           <Link to='about'>Faculty</Link>
-           <Link to='about'>Annour</Link>
-
+            <div className="flex flex-col-1 navlinks">
+            <button onClick={() => setActiveSection("about")}>About</button>
+            <button onClick={() => setActiveSection("faculty")}>Faculty</button>
+            <button onClick={() => setActiveSection("courses")}>Courses</button>
+            <button onClick={() => setActiveSection("info")}>Info</button>
+            </div>
+            {renderContent()}
           </div>
           <div className="photo-class">
-            <p>Featured</p>
-            <p>INSTRUCTOR</p>
+            <p className="feat">FEATURED </p>
+            <p className="feat">INSTRUCTOR</p>
           </div>
         </div>
       </div>
