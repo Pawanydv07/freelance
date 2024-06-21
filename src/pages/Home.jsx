@@ -6,21 +6,19 @@ import sliderimage3 from "../assets/photo3.jpg";
 import "../css/Home/Home.css";
 
 import HomeP1 from "../components/Home/HomeP1";
-// import HomeP2 from "../components/Home/HomeP2";
+import HomeP2 from "../components/Home/HomeP2";
 import HomeP3 from "../components/Home/HomeP3";
 import HomeP4 from "../components/Home/HomeP4";
 import HomeP5 from "../components/Home/HomeP5";
 import HomeP6 from "../components/Home/HomeP6";
 import HomeP7 from "../components/Home/HomeP7";
 import HomeP11 from "../components/Home/HomeP11";
-<<<<<<< Updated upstream
-import HomeP9 from "../components/Home/HomeP9";
 import HomeP10 from "../components/Home/HomeP10";
+import HomeP9 from "../components/Home/HomeP9";
 import Footer1 from "../components/Home/Footer1";
-=======
-import Choose from "./Choose";
 
->>>>>>> Stashed changes
+// import Choose from "./Choose";
+
 export const Home = () => {
   const slides = [
     {
@@ -47,22 +45,17 @@ export const Home = () => {
   return (
     <div className="home-container">
       <HomeP1 slides={slides} />
-      <Choose/>
-      {/* <HomeP2 /> */}
+   
+      <HomeP2 />
       <HomeP3 />
       <HomeP4/>
       <HomeP5/>
       <HomeP6/>
       <HomeP7/>
       <HomeP11/>
-<<<<<<< Updated upstream
-      <HomeP9/>
-      <HomeP10/>
-      <Footer1/> 
-=======
-      {/* <HomeP9/>
-      <HomeP10/> */}
->>>>>>> Stashed changes
+       <HomeP9/>
+      <HomeP10/> 
+      <Footer1/>
     </div>
   );
 };

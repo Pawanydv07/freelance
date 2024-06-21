@@ -2,10 +2,11 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import { Navbar } from "./components/Navbar";
-import { About, Contact, Home, Services } from "./pages";
+import { About, Contact,  Services } from "./pages";
 import CoursePage from "./pages/CoursesPage";
 import ClassPage from "./pages/ClassPage";
 import QuizPage from "./pages/QuizPage";
+import { Home } from "./pages/Home";
 
 function App() {
   return (
