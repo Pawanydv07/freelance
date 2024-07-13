@@ -28,7 +28,7 @@ const Login = () => {
       await signInWithEmailAndPassword(auth, email, password);
       setSuccess("Login successful!");
       setError("");
-      navigate('/home');
+      navigate('/');
     } catch (error) {
       setError(`Error logging in with email and password: ${error.message}`);
       console.error("Login error:", error);
