@@ -129,7 +129,7 @@ const Login = () => {
                     type="email"
                     autoComplete="email"
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-3 border-b-2 border-orange-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-black bg-opacity-10 backdrop-filter backdrop-blur-2xl"
+                    className="appearance-none rounded-none relative block w-full px-3 py-3 border-b-2 border-l-2 border-orange-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-black bg-opacity-10 backdrop-filter backdrop-blur-2xl"
                     placeholder="Email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -143,7 +143,7 @@ const Login = () => {
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-white bg-opacity-30 backdrop-filter backdrop-blur-lg"
+                    className="appearance-none rounded-none relative block w-full px-3 py-3 border-b-2 border-orange-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-black bg-opacity-10 backdrop-filter backdrop-blur-lg"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -153,22 +153,22 @@ const Login = () => {
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
-                  <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+                  <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 text-orange-600 focus:ring-orange-500 border-blue-500 rounded" />
+                  <label htmlFor="remember-me" className="ml-2 block text-sm text-white mt-2">
                     Remember me
                   </label>
                 </div>
 
                 <div className="text-sm">
-                  <Link to="/forgot-password" className="font-medium text-indigo-600 hover:text-indigo-500">
+                  <Link to="/forgot-password" className="font-medium text-orange-200 font-bold hover:text-orange-300">
                     Forgot your password?
                   </Link>
                 </div>
               </div>
 
               <div>
-                <button type="submit" className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-sm font-medium">
-                  Sign in
+                <button type="submit" className="w-full flex justify-center py-3 px-4 border-b-2 border-orange-300 rounded-md shadow-sm text-white bg-black hover:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-md font-bold bg-black bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl">
+                  SIGN IN
                 </button>
               </div>
             </form>
