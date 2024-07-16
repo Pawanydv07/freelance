@@ -1,9 +1,10 @@
+// CoursePage.jsx
 import React from 'react';
-import CoursePoster from './CoursePoster'; // Import the CoursePoster component
-import CategoryMenu from './CategoryMenu'; // Import the CategoryMenu component
-import DSANavBar from './DSANavBar'; // Import the DSANavBar component
-import DSAQuestionsList from './DSAQuestionsList'; // Import the DSAQuestionsList component
-import JavaScriptImage from '../assets/javascript.jpg'; // Replace with actual image paths
+import CoursePoster from './CoursePoster';
+import CategoryMenu from './CategoryMenu';
+import DSANavBar from './DSANavBar';
+import DSAQuestionsList from './DSAQuestionsList';
+import JavaScriptImage from '../assets/javascript.jpg';
 import ReactImage from '../assets/react.jpg';
 import HtmlImage from '../assets/HTML.jpg';
 import PythonImage from '../assets/python.jpg';
@@ -21,6 +22,7 @@ const CoursePage = () => {
             title="JavaScript"
             image={JavaScriptImage}
             description="Learn JavaScript, the programming language of the web, and build dynamic and interactive websites."
+            link="javascript" // Match this to the route path ("/javascript" in App.jsx)
           />
           
           {/* React Course */}
@@ -28,6 +30,7 @@ const CoursePage = () => {
             title="React"
             image={ReactImage}
             description="Master React, a powerful JavaScript library for building user interfaces, and create modern web applications."
+            link="react" // Match this to the route path ("/react" in App.jsx)
           />
           
           {/* HTML Course */}
@@ -35,6 +38,7 @@ const CoursePage = () => {
             title="HTML"
             image={HtmlImage}
             description="Understand the basics of HTML, the standard markup language for creating web pages, and build the structure of your websites."
+            link="html" // Example: ("/html" in App.jsx)
           />
           
           {/* Python Course */}
@@ -42,6 +46,7 @@ const CoursePage = () => {
             title="Python"
             image={PythonImage}
             description="Learn Python, a versatile and beginner-friendly programming language, and explore its applications in web development, data analysis, and more."
+            link="python" // Example: ("/python" in App.jsx)
           />
           
           {/* Node.js Course */}
@@ -49,6 +54,7 @@ const CoursePage = () => {
             title="Node.js"
             image={NodeJsImage}
             description="Get started with Node.js, a JavaScript runtime for building server-side applications, and learn to create scalable network applications."
+            link="nodejs" // Example: ("/nodejs" in App.jsx)
           />
           
           {/* Java Course */}
@@ -56,6 +62,7 @@ const CoursePage = () => {
             title="Java"
             image={JavaImage}
             description="Dive into Java, a popular programming language used for building robust and high-performance applications, and gain a strong foundation in object-oriented programming."
+            link="java" // Example: ("/java" in App.jsx)
           />
         </div>
 

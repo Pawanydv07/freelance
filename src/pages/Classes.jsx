@@ -122,13 +122,16 @@ const ClassSchedule = () => {
   ];
 
   return (
-    <div className="py-16 bg-white text-center">
-      <h2 className="text-4xl font-bold mb-6">Class Schedule</h2>
+    <div className="py-16 bg-gradient-to-r from-indigo-500 to-purple-600 text-center text-white">
+      <h2 className="text-4xl font-bold mb-10">Class Schedule</h2>
       <div className="max-w-4xl mx-auto">
         {schedule.map((classInfo, index) => (
-          <div key={index} className="bg-gray-100 rounded-lg p-6 mb-4 shadow-lg">
+          <div
+            key={index}
+            className="bg-white text-gray-800 rounded-lg p-6 mb-8 shadow-lg transform transition-all hover:scale-105 hover:shadow-xl"
+          >
             <h3 className="text-2xl font-semibold">{classInfo.topic}</h3>
-            <p className="text-xl">{classInfo.duration}</p>
+            <p className="text-xl mb-4">{classInfo.duration}</p>
             {/* Display corresponding class plan */}
             {classPlans.map((plan, idx) =>
               plan.topic === classInfo.topic ? (
@@ -147,24 +150,24 @@ const ClassSchedule = () => {
 };
 
 // Footer Component
-const Footer = () => {
-  return (
-    <div className="bg-gray-800 text-white py-6 text-center">
-      <p>&copy; 2024 Logical Sir. All rights reserved.</p>
-      <div className="mt-4">
-        <Link to="/contact" className="text-blue-400 mx-2">
-          Contact Us
-        </Link>
-        <Link to="/privacy" className="text-blue-400 mx-2">
-          Privacy Policy
-        </Link>
-        <Link to="/terms" className="text-blue-400 mx-2">
-          Terms of Service
-        </Link>
-      </div>
-    </div>
-  );
-};
+// const Footer = () => {
+//   return (
+//     <div className="bg-gray-800 text-white py-6 text-center">
+//       <p>&copy; 2024 Logical Sir. All rights reserved.</p>
+//       <div className="mt-4">
+//         <Link to="/contact" className="text-blue-400 mx-2">
+//           Contact Us
+//         </Link>
+//         <Link to="/privacy" className="text-blue-400 mx-2">
+//           Privacy Policy
+//         </Link>
+//         <Link to="/terms" className="text-blue-400 mx-2">
+//           Terms of Service
+//         </Link>
+//       </div>
+//     </div>
+//   );
+// };
 
 // Sample Instructors Data
 const instructors = [
@@ -215,7 +218,7 @@ const Classes = () => {
         ))}
       </div>
       <ClassSchedule />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

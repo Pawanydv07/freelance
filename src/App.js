@@ -14,6 +14,7 @@ import InstructorsPage from "./pages/InstructorsPage";
 import Navbar from "./components/Navbar";
 import ProfileCard from "./pages/ProfileCard";
 import Classes from "./pages/Classes";
+import Footer from "./utility/Footer";
 
 function App() {
   return (
@@ -33,7 +34,17 @@ function App() {
         <Route path="student" element={<StudentDashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/instructors" element={<InstructorsPage />} />
+          {/* Routes for each course detail page */}
+          {/* <Route path="/react" element={<CourseDetailReact />} /> */}
+         
+          {/* <Route path="/javascript" element={<CourseDetailJavaScript />} />
+          <Route path="/html" element={<CourseDetailHTML />} />
+          <Route path="/python" element={<CourseDetailPython />} />
+          <Route path="/nodejs" element={<CourseDetailNodeJS />} />
+          <Route path="/java" element={<CourseDetailJava />} /> */}
+      
       </Routes>
+      <Footer/>
     </div>
   );
 }
