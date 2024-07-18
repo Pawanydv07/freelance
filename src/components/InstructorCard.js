@@ -1,4 +1,6 @@
+// src/components/InstructorCard.js
 import React from 'react';
+import whiteBg from "../assets/white-image.jpg" // Replace with your actual image path
 
 const colors = [
   { bg: 'bg-orange-200', text: 'text-orange-700', hoverBg: 'hover:bg-orange-300' },
@@ -8,7 +10,14 @@ const colors = [
 
 const InstructorCard = ({ instructor }) => {
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg m-4 transition-transform transform hover:scale-105 bg-white">
+    <div
+      className="max-w-sm rounded overflow-hidden shadow-lg m-4 transition-transform transform hover:scale-105 bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg border border-white border-opacity-30"
+      style={{
+        backgroundImage: `url(${whiteBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
       <img className="w-full h-48 object-cover" src={instructor.photo} alt={instructor.name} />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 text-slate-950">{instructor.name}</div>
@@ -17,7 +26,7 @@ const InstructorCard = ({ instructor }) => {
           {instructor.description}
         </p>
       </div>
-      <div className="px-6 pt-4 pb-2 bg-gray-100 rounded-b-lg">
+      <div className="px-6 pt-4 pb-2 bg-gray-100 bg-opacity-50 rounded-b-lg">
         {instructor.courses.map((course, index) => {
           const color = colors[index % colors.length];
           return (

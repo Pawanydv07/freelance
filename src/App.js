@@ -16,6 +16,8 @@ import ProfileCard from "./pages/ProfileCard";
 import Classes from "./pages/Classes";
 import Footer from "./utility/Footer";
 
+import IntroPage from "./pages/IntroPage";
+
 function App() {
   return (
     <div className="App">
@@ -45,6 +47,8 @@ function App() {
       
       </Routes>
       <Footer/>
+      {/* <Flying/> */}
+      {/* <IntroPage/> */}
     </div>
   );
 }

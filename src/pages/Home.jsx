@@ -16,6 +16,7 @@ import HomeP11 from "../components/Home/HomeP11";
 import HomeP10 from "../components/Home/HomeP10";
 import HomeP9 from "../components/Home/HomeP9";
 import Footer1 from "../components/Home/Footer1";
+import IntroPage from "./IntroPage";
 
 // import Choose from "./Choose";
 
@@ -44,18 +45,18 @@ export const Home = () => {
 
   return (
     <div className="home-container">
-      <HomeP1 slides={slides} />
-   
+      {/* <HomeP1 slides={slides} /> */}
+      <IntroPage />
       <HomeP2 />
       <HomeP3 />
-      <HomeP4/>
-      <HomeP5/>
-      <HomeP6/>
-      <HomeP7/>
-      <HomeP11/>
-       <HomeP9/>
-      <HomeP10/> 
-      <Footer1/>
+      <HomeP4 />
+      <HomeP5 />
+      <HomeP6 />
+      <HomeP7 />
+      <HomeP11 />
+      <HomeP9 />
+      <HomeP10 />
+      <Footer1 />
     </div>
   );
 };

@@ -3,6 +3,9 @@ import "../../css/Home/HomeP2.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee, faAppleAlt, faLeaf, faBook } from '@fortawesome/free-solid-svg-icons';
 
+// Import the background image
+import backgroundImage from '../../assets/white3.jpg';
+
 const HomeP2 = () => {
   const boxes = [
     { icon: faCoffee, heading: 'Quality Coffee', text: 'Enjoy the best coffee in town, freshly brewed and served with a smile.' },
@@ -12,7 +15,7 @@ const HomeP2 = () => {
   ];
 
   return (
-    <div className="info-boxes-container">
+    <div className="info-boxes-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <h1 className="component-heading">
         <span className="first-part">Our</span><br />
         <span className="second-part">Features</span>

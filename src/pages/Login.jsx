@@ -81,7 +81,7 @@ const Login = () => {
         </div>
         <div className="w-full md:w-1/2">
           <div className="text-center">
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Welcome back</h2>
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Welcome Back</h2>
             <p className="mt-2 text-center text-sm text-gray-600">
               Connect with a social account or enter your email address and password.
             </p>
@@ -106,9 +106,9 @@ const Login = () => {
                 <button
                   type="button"
                   onClick={handleGoogleLogin}
-                  className="w-full flex justify-center py-3 px-4 border border-gray-300 rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 text-sm font-medium"
+                  className="w-full flex justify-center py-3 px-4 border border-gray-300 text-white hover:bg-slate-900 rounded-md shadow-sm text-gray-700 bg-black bg-black bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-xl hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 text-sm font-medium"
                 >
-                  <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" className="h-6 w-6 mr-2" />
+                  <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" className="h-6 w-6 mr-2  " />
                   Log in with Google
                 </button>
               </div>
