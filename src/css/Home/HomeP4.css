@@ -1,6 +1,6 @@
 .courses-container {
-  padding: 20px;
-  max-width: 1200px;
+  padding: 0;
+  max-width: 100vw;
   margin: auto;
   text-align: center;
 }
@@ -150,4 +150,16 @@
 
 .details-button:hover {
   background: #FE9B7E;
+}
+@keyframes tilt {
+  0%, 100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.tilting-title {
+  animation: tilt 3s infinite alternate;
 }

@@ -1,11 +1,10 @@
 import React from 'react';
 import '../../css/Home/HomeP6.css'; // Import the CSS file for styling
-
-// Assuming images are placed in `../../assets` directory
 import photo1 from '../../assets/photo1.jpg';
 import photo2 from '../../assets/photo2.jpg';
 import default2 from '../../assets/photo1.jpg';
 import hover2 from '../../assets/photo2.jpg';
+import backgroundImage from '../../assets/back1.jpg'; // Import the background image
 
 const HoverImageComponent = () => {
   const projects = [
@@ -14,8 +13,7 @@ const HoverImageComponent = () => {
   ];
 
   return (
-    <div className="component-container">
-      {/* <h1 className="component-heading">Our Exciting Projects</h1> */}
+    <div className="component-container w-full" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="hover-image-container">
         <div className="description-container">
           <h2 className="sub-heading">Explore Our Portfolio</h2>
