@@ -1,6 +1,7 @@
 .info-boxes-container {
   text-align: center;
   padding: 2rem;
+ 
 }
 
 .heading {
@@ -13,21 +14,26 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  
+ 
 }
 
 .box {
+  /* border: 1px solid red; */
   background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  /* border: 1px solid #ddd; */
+  box-shadow: 3px 3px 6px 2px #f1f1f1;
+  /* border: 1px solid red; */
+  border-radius: 15px;
   padding: 20px;
   text-align: center;
   transition: background-color 0.3s ease;
-  width: 250px;
+  width: 350px;
   margin-bottom: 20px; /* Added margin between boxes */
 }
 
 .box:hover {
-  background-color: #FE9B7E;
+  /* background-color: #FE9B7E; */
 }
 
 .box-content {
@@ -51,27 +57,95 @@
   transition: opacity 0.3s ease;
 }
 
-.box:hover .box-number {
+/* .box:hover .box-number {
   opacity: 1;
-}
+} */
 
-.icon {
+.img {
   font-size: 3rem;
   margin-bottom: 10px;
+  margin-left: 100px;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* text-align: center; */
+  /* object-fit: cover; */
+  /* border: 1px solid rebeccapurple; */
+}
+.img-box {
+
+  /* border: 1px solid red; */
+  justify-content: center;
+  text-align: center;
+
+}
+.heading-text{
+font-size: 24px;
+font-weight: bold;
+/* margin-bottom: 8px; */
+font-family: weblysleek_uisemibold;
+color: black;
+/* width: 90%; */
+
 }
 
 h2 {
   font-size: 1.5rem;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 p {
-  font-size: 1rem;
-  line-height: 1.5;
+  /* font-size: 1rem;
+  line-height: 1.5; */
+  color: #797777;
+  font-family: weblysleek_uisemibold;
+  font-weight: bold;
+  font-size: 17px;
+}
+.ul{
+  /* border: 1px solid red; */
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  /* display: inline-block; */
+  list-style-type: none;
+  /* margin-top: -20px; */
+ 
+}
+li{
+  /* display: inline-block; */
+  /* border: 1px solid red; */
+  font-size: 15px ;
+  font-family: calibri,calibriregular,Arial,Helvetica,sans-serif;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  line-height: 8px;
+  color: #6d706c !important;
+}
+.icon{
+  justify-content: center;
+  align-items: center;
+  /* font-size: 30px; */
+  /* color: aqua; */
+  /* margin-top: 10px; */
+}
+
+
+.second-part{
+  color: black !important;
+  font-family: weblysleek_uisemibold;
+  font-size: 35px;
+  font-weight: bold;
+  padding: 10px 0 30px;
 }
 
 @media (max-width: 768px) {
   .box {
-    width: calc(50% - 20px);
+    width: calc(100%);
+    border: 1px solid red;
+    margin-right: 0;
+  }
+  .img{
+    margin-left: 65px;
   }
 }

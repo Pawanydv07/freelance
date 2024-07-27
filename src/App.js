@@ -14,11 +14,13 @@ import InstructorsPage from "./pages/InstructorsPage";
 import Navbar from "./components/Navbar";
 import ProfileCard from "./pages/ProfileCard";
 import Classes from "./pages/Classes";
+import AllRoutes from "./allroutes/AllRoutes";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
+      <AllRoutes/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

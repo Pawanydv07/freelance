@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const CoursePoster = ({ title, image, description }) => {
+const CoursePoster = ({ title, image, description, navigateTo }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
   };
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(navigateTo);
+  };
+
   return (
-    <div className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+    <div onClick={handleClick} className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
       <img
         src={image}
         alt={title}

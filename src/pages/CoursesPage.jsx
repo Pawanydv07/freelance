@@ -9,8 +9,9 @@ import HtmlImage from '../assets/HTML.jpg';
 import PythonImage from '../assets/python.jpg';
 import NodeJsImage from '../assets/nodejs.jpeg';
 import JavaImage from '../assets/java.jpg';
-
+import { useNavigate } from 'react-router-dom';
 const CoursePage = () => {
+
   return (
     <div className="min-h-screen bg-gray-100 py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -28,6 +29,7 @@ const CoursePage = () => {
             title="React"
             image={ReactImage}
             description="Master React, a powerful JavaScript library for building user interfaces, and create modern web applications."
+            navigateTo="/courses-react"
           />
           
           {/* HTML Course */}

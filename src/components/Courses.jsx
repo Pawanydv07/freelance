@@ -1,7 +1,7 @@
 // src/CoursePage.js
 import React from 'react';
 import "../css/Courses.css";
-import courseImage from '../assets/course.jpeg'; // Ensure you have this image in your src folder
+import courseImage from '../assets/course.jpeg'; 
 
 const CoursePage = () => {
     return (

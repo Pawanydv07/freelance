@@ -43,7 +43,7 @@ export const Home = () => {
   ];
 
   return (
-    <div className="home-container">
+    <div className="">
       <HomeP1 slides={slides} />
    
       <HomeP2 />
