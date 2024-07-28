@@ -26,6 +26,7 @@ module.exports = {
         customBlue: '#052149',
         customTransparentBlue: '#1256B7CF',
         customDeepBlue: '#133970',
+        customLight: '#fff7ec',
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

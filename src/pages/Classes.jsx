@@ -28,7 +28,7 @@ const HeroSection = () => {
 // Course Details Component
 const CourseDetails = () => {
   return (
-    <div className="py-16 bg-gray-100 text-center">
+    <div className="py-16 bg-gray-100 text-center ">
       <h2 className="text-4xl font-bold mb-6">Course Details</h2>
       <p className="text-xl mb-4">
         Our Full Stack Developer course covers both front-end and back-end
@@ -43,7 +43,7 @@ const CourseDetails = () => {
 // Instructor Card Component
 const InstructorCard = ({ instructor }) => {
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg m-4 transition-transform transform hover:scale-105 bg-white">
+    <div className="max-w-sm rounded overflow-hidden shadow-lg m-4 transition-transform transform hover:scale-105 bg-customLight">
       <img
         className="w-full h-48 object-cover"
         src={instructor.photo}
