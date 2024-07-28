@@ -21,10 +21,10 @@ module.exports = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        customLight: '#fff7ec',
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        customBlue: '#052149',
-        customTransparentBlue: '#1256B7CF',
+       
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
