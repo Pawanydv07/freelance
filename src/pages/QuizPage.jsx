@@ -44,10 +44,10 @@ const QuizPage = () => {
               <div className="bg-purple-700 h-2.5 rounded-full" style={{ width: `${(currentQuestionIndex / questions.length) * 100}%` }}></div>
             </div>
             <div className="ml-4 flex items-center">
-              <button className="mr-2 px-2 py-1 bg-gray-200 rounded">Review</button>
+              <button className="mr-2 px-2 py-1 bg-gray-200 rounded text-blue-500">Review</button>
               <button className="px-2 py-1 bg-gray-200 rounded">Mark as review</button>
             </div>
-            <div className="ml-4">00:00 Min</div>
+            <div className="ml-4 text-blue-500">00:00 Min</div>
           </div>
         </div>
         <div className="p-4">
@@ -70,20 +70,20 @@ const QuizPage = () => {
         </div>
         <div className="p-4 border-t flex justify-between">
           <button
-            className="px-4 py-2 bg-gray-200 rounded"
+            className="px-4 py-2 bg-blue-500 rounded text-white border-b-2 border-t-2 border-r-2 border-orange-300"
             onClick={() => setCurrentQuestionIndex((prev) => Math.max(prev - 1, 0))}
             disabled={currentQuestionIndex === 0}
           >
             Previous
           </button>
           <button
-            className="px-4 py-2 bg-purple-700 text-white rounded"
+            className="px-4 py-2 bg-blue-500 text-white rounded"
             onClick={() => setCurrentQuestionIndex((prev) => Math.min(prev + 1, questions.length - 1))}
             disabled={currentQuestionIndex === questions.length - 1}
           >
             Next
           </button>
-          <button className="px-4 py-2 bg-purple-700 text-white rounded">Finish</button>
+          <button className="px-4 py-2 bg-blue-500 text-white rounded">Finish</button>
         </div>
       </div>
     </div>
