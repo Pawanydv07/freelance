@@ -32,8 +32,8 @@ const QuizPage = () => {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-purple-600 p-4 mt-14">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-4xl">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-custom p-4 mt-14">
+      <div className="bg-customLight rounded-lg shadow-lg w-full max-w-4xl">
         <div className="p-4 border-b">
           <div className="flex justify-between items-center">
             <h2 className="text-xl font-semibold">MCT Mock Tests</h2>
