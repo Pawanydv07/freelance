@@ -29,7 +29,7 @@ const HeroSection = () => {
 const CourseDetails = () => {
   return (
     <div className="py-16 bg-gray-100 text-center bg-gradient-custom">
-      <h2 className="text-4xl font-bold mb-6">Course Details</h2>
+      <h2 className="text-4xl font-bold mb-6 text-white">Course Details</h2>
       <p className="text-xl mb-4 text-white">
         Our Full Stack Developer course covers both front-end and back-end
         development, including technologies like HTML, CSS, JavaScript, React &
