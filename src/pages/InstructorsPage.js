@@ -5,7 +5,7 @@ import { instructors } from "../Data/instructorsData";
 
 const InstructorsPage = () => {
   return (
-    <div className="bg-slate-900 min-h-screen container w-full mx-auto px-2 ">
+    <div className="bg-gradient-custom min-h-screen container w-full mx-auto px-2 container">
       <h1 className="text-3xl font-bold text-center my-20 text-white ">The Curriculum Team</h1>
       <p className="text-center text-gray-300">
         With extensive industry experience, the Masai Curriculum Team is a group of expert instructors. All our instructors share 2 things in common, on-the-job learnings and a passion for teaching.
