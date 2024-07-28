@@ -28,9 +28,9 @@ const HeroSection = () => {
 // Course Details Component
 const CourseDetails = () => {
   return (
-    <div className="py-16 bg-gray-100 text-center ">
+    <div className="py-16 bg-gray-100 text-center bg-gradient-custom">
       <h2 className="text-4xl font-bold mb-6">Course Details</h2>
-      <p className="text-xl mb-4">
+      <p className="text-xl mb-4 text-white">
         Our Full Stack Developer course covers both front-end and back-end
         development, including technologies like HTML, CSS, JavaScript, React &
         Redux, Node.js, MongoDB & Express, and more. Gain hands-on experience
@@ -122,7 +122,7 @@ const ClassSchedule = () => {
   ];
 
   return (
-    <div className="py-16 bg-gradient-to-r from-indigo-500 to-purple-600 text-center text-white">
+    <div className="py-16 bg-gradient-custom text-center text-white">
       <h2 className="text-4xl font-bold mb-10">Class Schedule</h2>
       <div className="max-w-4xl mx-auto">
         {schedule.map((classInfo, index) => (
@@ -209,10 +209,10 @@ const instructors = [
 // Main Classes Component
 const Classes = () => {
   return (
-    <div className="font-sans">
+    <div className="font-sans bg-gradient-custom">
       <HeroSection />
       <CourseDetails />
-      <div className="flex flex-wrap justify-center bg-gray-100 py-16">
+      <div className="flex flex-wrap justify-center bg-gradient-custom py-16">
         {instructors.map((instructor, index) => (
           <InstructorCard key={index} instructor={instructor} />
         ))}

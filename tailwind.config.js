@@ -2,10 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx}",
   ],
   prefix: "",
   theme: {
@@ -17,16 +17,19 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        "gradient-custom": "linear-gradient(to right, #000428, #004e92)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        customBlue: '#052149',
-        customTransparentBlue: '#1256B7CF',
-        customDeepBlue: '#133970',
-        customLight: '#fff7ec',
+        customBlue: "#052149",
+        customTransparentBlue: "#1256B7CF",
+        customDeepBlue: "#133970",
+        customLight: "#fff7ec",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -78,4 +81,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
