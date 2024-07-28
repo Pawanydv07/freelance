@@ -51,12 +51,12 @@ export const Home = () => {
       <HomeP3 />
       <HomeP4 />
       <HomeP5 />
-      <HomeP6 />
-      <HomeP7 />
+      {/* <HomeP6 /> */}
+      {/* <HomeP7 /> */}
       <HomeP11 />
       <HomeP9 />
       <HomeP10 />
-      <Footer1 />
+      {/* <Footer1 /> */}
     </div>
   );
 };
