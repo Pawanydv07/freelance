@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CoursePoster = ({ title, image, description }) => {
+const CoursePoster = ({ title, image, description, price }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleDescription = () => {
@@ -12,7 +12,7 @@ const CoursePoster = ({ title, image, description }) => {
       <img
         src={image}
         alt={title}
-        className="w-full h-auto object-cover"
+        className="w-full h-48 object-cover"
       />
       <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
       <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -26,6 +26,7 @@ const CoursePoster = ({ title, image, description }) => {
         >
           {isExpanded ? 'View Less' : 'View More'}
         </button>
+        <p className="mt-2 text-lg font-bold text-white">${price}</p>
       </div>
     </div>
   );

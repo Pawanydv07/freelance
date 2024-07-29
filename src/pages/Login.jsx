@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, googleProvider, facebookProvider, signInWithPopup, signInWithEmailAndPassword, signOut } from '../firebase';
-import white3 from '../assets/white3.jpg'; // Import your background image
+import white3 from '../assets/lecture1.jpg'; // Import your background image
 import robotImage from '../assets/robo2.png'; // Import your robot image
 
 const Login = () => {

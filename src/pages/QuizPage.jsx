@@ -5,6 +5,8 @@ const QuizPage = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [secondsElapsed, setSecondsElapsed] = useState(0);
+  const [timerRunning, setTimerRunning] = useState(true);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -25,11 +27,31 @@ const QuizPage = () => {
     fetchQuestions();
   }, []);
 
+  useEffect(() => {
+    let timer;
+    if (timerRunning) {
+      timer = setInterval(() => {
+        setSecondsElapsed((prev) => prev + 1);
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [timerRunning]);
+
+  const handleFinish = () => {
+    setTimerRunning(false);
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
   const currentQuestion = questions[currentQuestionIndex];
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-custom p-4 mt-14">
@@ -47,7 +69,7 @@ const QuizPage = () => {
               <button className="mr-2 px-2 py-1 bg-gray-200 rounded text-blue-500">Review</button>
               <button className="px-2 py-1 bg-gray-200 rounded">Mark as review</button>
             </div>
-            <div className="ml-4 text-blue-500">00:00 Min</div>
+            <div className="ml-4 text-blue-500">{formatTime(secondsElapsed)} Min</div>
           </div>
         </div>
         <div className="p-4">
@@ -83,7 +105,7 @@ const QuizPage = () => {
           >
             Next
           </button>
-          <button className="px-4 py-2 bg-blue-500 text-white rounded">Finish</button>
+          <button className="px-4 py-2 bg-blue-500 text-white rounded" onClick={handleFinish}>Finish</button>
         </div>
       </div>
     </div>

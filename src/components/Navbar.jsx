@@ -1,10 +1,10 @@
 // src/components/Navbar.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, signOut } from "../firebase";
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment } from "react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
+import logo from "../assets/logo.png"; // Import the logo image
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,8 +42,8 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-10">
           <div className="flex items-center">
-            <Link to="/" className="text-white text-lg font-bold">
-              LogicalSir
+            <Link to="/">
+              <img src={logo} alt="LogicalSir Logo" className="h-20 w-20" /> {/* Replace text with logo */}
             </Link>
           </div>
           <div className="hidden md:flex">
