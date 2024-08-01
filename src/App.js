@@ -18,6 +18,7 @@ import Footer from "./utility/Footer";
 
 import IntroPage from "./pages/IntroPage";
 import ProgrammingAp from "./pages/ProgrammingAp";
+import Team from "./pages/Team";
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
         <Route path="/quiz" element={<QuizPage />} />
         <Route path="student" element={<StudentDashboard />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/instructors" element={<InstructorsPage />} />
+        <Route path="/instructors" element={<Team />} />
         <Route path="/programming"element={<ProgrammingAp/>}/>
           {/* Routes for each course detail page */}
           {/* <Route path="/react" element={<CourseDetailReact />} /> */}

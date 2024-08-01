@@ -67,7 +67,7 @@ const QuizPage = () => {
             </div>
             <div className="ml-4 flex items-center">
               <button className="mr-2 px-2 py-1 bg-gray-200 rounded text-blue-500">Review</button>
-              <button className="px-2 py-1 bg-gray-200 rounded">Mark as review</button>
+              <button className="px-2 py-1 bg-gray-200 rounded text-sm">Mark Review</button>
             </div>
             <div className="ml-4 text-blue-500">{formatTime(secondsElapsed)} Min</div>
           </div>
