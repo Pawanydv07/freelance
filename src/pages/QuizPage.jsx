@@ -55,7 +55,7 @@ const QuizPage = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-custom p-4 mt-14">
-      <div className="bg-customLight rounded-lg shadow-lg w-full max-w-4xl">
+      <div className="bg-customLight rounded-lg shadow-lg w-full max-w-6xl">
         <div className="p-4 border-b">
           <div className="flex justify-between items-center">
             <h2 className="text-xl font-semibold">MCT Mock Tests</h2>
