@@ -35,7 +35,7 @@ const ThankYouPage = () => {
   };
 
   const handleGenerateMoreQuestions = () => {
-    navigate('/quiz');
+    navigate('/generate-questions');
   };
 
   return (
