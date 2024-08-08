@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const QuizPage = () => {
   const [questions, setQuestions] = useState([]);
@@ -7,6 +8,8 @@ const QuizPage = () => {
   const [loading, setLoading] = useState(true);
   const [secondsElapsed, setSecondsElapsed] = useState(0);
   const [timerRunning, setTimerRunning] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -38,7 +41,19 @@ const QuizPage = () => {
   }, [timerRunning]);
 
   const handleFinish = () => {
+    setShowModal(true);
+  };
+
+  const confirmFinish = () => {
     setTimerRunning(false);
+    setShowModal(false);
+    navigate('/thank-you'); // Navigate to the Thank You page upon confirmation
+  };
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
 
   if (loading) {
@@ -46,12 +61,6 @@ const QuizPage = () => {
   }
 
   const currentQuestion = questions[currentQuestionIndex];
-
-  const formatTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-custom p-4 mt-14">
@@ -108,6 +117,29 @@ const QuizPage = () => {
           <button className="px-4 py-2 bg-blue-500 text-white rounded" onClick={handleFinish}>Finish</button>
         </div>
       </div>
+
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-red-500 p-8 rounded shadow-lg">
+            <h2 className="text-xl font-semibold mb-4">Confirm Submission</h2>
+            <p className="mb-4">Are you sure you want to finish the test? Once submitted, you cannot make any changes.</p>
+            <div className="flex justify-end">
+              <button
+                className="px-4 py-2 bg-gray-300 rounded mr-2"
+                onClick={() => setShowModal(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 bg-blue-500 text-white rounded"
+                onClick={confirmFinish}
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

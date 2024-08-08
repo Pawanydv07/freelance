@@ -54,9 +54,9 @@ const QuizInfoPage = () => {
   }, []);
 
   return (
-    <div className={`min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#000428] to-[#004e92] text-white ${startQuiz ? 'page-turn' : ''}`}>
-      <div className="w-full max-w-2xl bg-white rounded-lg shadow-md p-8 text-gray-800">
-        <h1 className="text-2xl font-bold mb-4">Quiz Instructions</h1>
+    <div className={`min-h-screen  flex flex-col items-center justify-center bg-gradient-to-r from-[#000428] to-[#004e92] text-white ${startQuiz ? 'page-turn' : ''}`}>
+      <div className="w-full max-w-6xl mt-20 min-h-screen-1/2 bg-white rounded-lg shadow-md p-8 text-gray-800">
+        <h1 className="text-3xl font-bold mb-4">Quiz Instructions</h1>
         <p className="mb-4">
           Please read the following instructions carefully before starting the quiz:
         </p>
@@ -65,6 +65,29 @@ const QuizInfoPage = () => {
           <li>You have a limited time to complete the quiz.</li>
           <li>Do not refresh the page during the quiz.</li>
           <li>Each question is mandatory and must be answered.</li>
+          <li>Use the "Next" button to navigate through questions.</li>
+          <li>Once you submit the quiz, you cannot return to make changes.</li>
+          <li>Ensure your webcam and microphone are working properly.</li>
+          <li>Take the quiz in a quiet and well-lit environment.</li>
+          <li>Avoid any form of malpractice during the quiz.</li>
+          <li>Make sure you understand each question before answering.</li>
+          <li>If you face any technical issues, contact support immediately.</li>
+        </ul>
+        <h2 className="text-2xl font-bold mb-4">Additional Information</h2>
+        <p className="mb-4">
+          This quiz is designed to assess your knowledge and understanding of the subject matter. Here are some key points to keep in mind:
+        </p>
+        <ul className="list-disc list-inside mb-4">
+          <li>The quiz consists of multiple-choice questions.</li>
+          <li>Each question carries equal weightage.</li>
+          <li>There is no negative marking for incorrect answers.</li>
+          <li>You can review your answers before final submission.</li>
+          <li>The timer will be visible at the top of the screen.</li>
+          <li>In case of a tie, the time taken to complete the quiz will be considered.</li>
+          <li>Your webcam will be used for monitoring purposes.</li>
+          <li>Make sure to allow camera and microphone permissions when prompted.</li>
+          <li>Your progress will be saved automatically.</li>
+          <li>Stay calm and focus on one question at a time.</li>
         </ul>
         <div className="mb-4">
           <label className="inline-flex items-center">

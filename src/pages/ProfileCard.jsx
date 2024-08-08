@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import profile from "../assets/profile.jpg"; // Update the path to your profile image
 import { Line } from 'react-chartjs-2';
 import {
@@ -11,6 +11,8 @@ import {
   Tooltip,
   Legend
 } from 'chart.js';
+import { auth } from '../firebase'; // Import the Firebase auth instance
+import { onAuthStateChanged } from "firebase/auth";
 
 // Register the components
 ChartJS.register(
@@ -24,6 +26,15 @@ ChartJS.register(
 );
 
 const ProfilePage = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
   const data = {
     labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
     datasets: [
@@ -72,11 +83,16 @@ const ProfilePage = () => {
         <div className="flex items-center space-x-4">
           <img src={profile} alt="Profile" className="w-16 h-16 rounded-full" />
           <div>
-            <h2 className="text-2xl font-bold text-blue-600">Jason Ortega</h2>
-            <p className="text-gray-700">Full Stack Developer</p>
-            <p className="text-gray-500">San Francisco, CA, USA</p>
-            <p className="text-gray-500">jortega@gmail.com</p>
-            <p className="text-gray-500">510.134.3850</p>
+            {user ? (
+              <>
+                <h2 className="text-2xl font-bold text-blue-600">{user.displayName}</h2>
+                <p className="text-gray-700">Full Stack Developer</p>
+                <p className="text-gray-500">{user.email}</p>
+                <p className="text-gray-500">510.134.3850</p>
+              </>
+            ) : (
+              <p className="text-gray-500">Loading...</p>
+            )}
           </div>
         </div>
         <div className="mt-6">
