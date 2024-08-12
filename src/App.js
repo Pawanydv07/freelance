@@ -51,7 +51,7 @@ function App() {
         <Route path="/nodejs" element={<CourseDetailNodeJS />} />
         <Route path="/java" element={<CourseDetailJava />} /> */}
       </Routes>
-      <BunnyCDNFetch/>
+      {/* <BunnyCDNFetch/> */}
       <Footer />
       {/* <Flying /> */}
       {/* <IntroPage /> */}
