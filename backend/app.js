@@ -1,13 +1,14 @@
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 require('dotenv').config();
 
 const connectDB = require('./config/db');
 const Question = require('./models/Questions'); // Ensure this path is correct
 
 const app = express();
-
+app.use(cors());
 // Connect to database
 connectDB();
 

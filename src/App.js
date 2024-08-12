@@ -21,6 +21,7 @@ import Team from "./pages/Team";
 import ThankYouPage from "./pages/ThankYouPage";
 import QuestionGeneratorPage from "./pages/QuestionGeneratorPage";
 import BunnyCDNFetch from "./components/BunnyCdn";
+import Quiz from "./pages/Quiz";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
       </Routes>
       {/* <BunnyCDNFetch/> */}
       <Footer />
+      <Quiz/>
       {/* <Flying /> */}
       {/* <IntroPage /> */}
     </div>
