@@ -2,7 +2,7 @@ import React from 'react';
 import "../css/intro.css"
 const IntroPage = () => {
   return (
-    <div className="relative h-screen w-screen main mt-20 ">
+    <div className="relative h-screen w-screen main ">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
         src={`${process.env.PUBLIC_URL}/background-video.mp4`}

@@ -20,6 +20,7 @@ import ProgrammingAp from "./pages/ProgrammingAp";
 import Team from "./pages/Team";
 import ThankYouPage from "./pages/ThankYouPage";
 import QuestionGeneratorPage from "./pages/QuestionGeneratorPage";
+import BunnyCDNFetch from "./components/BunnyCdn";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
         <Route path="/nodejs" element={<CourseDetailNodeJS />} />
         <Route path="/java" element={<CourseDetailJava />} /> */}
       </Routes>
+      <BunnyCDNFetch/>
       <Footer />
       {/* <Flying /> */}
       {/* <IntroPage /> */}
