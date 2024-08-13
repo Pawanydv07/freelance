@@ -1,0 +1,49 @@
+.mainbox{
+  height: auto;
+}
+.neon-button {
+  position: relative;
+  overflow: hidden;
+  background-color: #222; /* Dark background for better neon effect */
+  border: 2px solid transparent; /* Initial border */
+  transition: all 0.3s ease-in-out;
+}
+
+.neon-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.2) 100%);
+  filter: blur(10px);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.neon-button:hover::before {
+  opacity: 1;
+}
+
+.neon-text {
+  color: #fff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.8);
+}
+
+.neon-shadow {
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.8);
+}
+
+.neon-button-primary {
+  background-color: #333; /* Darker background for neon buttons */
+}
+
+.neon-button-primary:hover {
+  border: 2px solid rgba(0, 255, 255, 0.8); /* Neon border on hover */
+}
+.question-box {
+  background-color: black;
+  color: white;
+}

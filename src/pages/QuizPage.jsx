@@ -1,145 +1,193 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import "../css/quiz.css";
 
 const QuizPage = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [secondsElapsed, setSecondsElapsed] = useState(0);
-  const [timerRunning, setTimerRunning] = useState(true);
-  const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate();
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [markedForReview, setMarkedForReview] = useState([]);
+  const [showResult, setShowResult] = useState(false);
+  const [score, setScore] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(1130);
+  const [reviewMode, setReviewMode] = useState(false);
 
   useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        const response = await axios.get('https://quizapi.io/api/v1/questions', {
-          params: {
-            apiKey: 'uWEkQ1OzZ5bk5V3tAgcczdS6lIz5ol1nPN3vye6M',
-            limit: 10,
-          },
-        });
-        setQuestions(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching questions:', error);
-      }
-    };
-
-    fetchQuestions();
+    fetch('http://localhost:3000/api/questions/questions')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Fetched Questions:', data);
+        setQuestions(data);
+      })
+      .catch((error) => console.error('Error fetching questions:', error));
   }, []);
 
   useEffect(() => {
-    let timer;
-    if (timerRunning) {
-      timer = setInterval(() => {
-        setSecondsElapsed((prev) => prev + 1);
-      }, 1000);
+    if (timeLeft > 0) {
+      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+      return () => clearTimeout(timer);
+    } else {
+      handleNextQuestion();
     }
-    return () => clearInterval(timer);
-  }, [timerRunning]);
+  }, [timeLeft]);
 
-  const handleFinish = () => {
-    setShowModal(true);
+  const handleAnswerSelect = (answerIndex) => {
+    setSelectedAnswer(answerIndex);
   };
 
-  const confirmFinish = () => {
-    setTimerRunning(false);
-    setShowModal(false);
-    navigate('/thank-you'); // Navigate to the Thank You page upon confirmation
+  const handleNextQuestion = () => {
+    if (selectedAnswer === questions[currentQuestionIndex].correctAnswerIndex) {
+      setScore(score + 1);
+    }
+
+    setSelectedAnswer(null);
+    setTimeLeft(30);
+    if (reviewMode) {
+      const nextReviewIndex = markedForReview.indexOf(currentQuestionIndex) + 1;
+      if (nextReviewIndex < markedForReview.length) {
+        setCurrentQuestionIndex(markedForReview[nextReviewIndex]);
+      } else {
+        setReviewMode(false);
+      }
+    } else if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    } else {
+      setShowResult(true);
+    }
   };
 
-  const formatTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  const handlePreviousQuestion = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
+      setTimeLeft(30);
+    }
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
+  const handleMarkForReview = () => {
+    if (!markedForReview.includes(currentQuestionIndex)) {
+      setMarkedForReview([...markedForReview, currentQuestionIndex]);
+    }
+    handleNextQuestion();
+  };
+
+  const handleReviewQuestions = () => {
+    if (markedForReview.length > 0) {
+      setReviewMode(true);
+      setCurrentQuestionIndex(markedForReview[0]);
+      setTimeLeft(30);
+    }
+  };
+
+  if (questions.length === 0) {
+    return <div className="text-center text-white">Loading...</div>;
+  }
+
+  if (showResult) {
+    return (
+      <div className="flex justify-center items-center h-screen bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600">
+        <div className="bg-white p-8 rounded-lg shadow-lg text-center animate-pulse">
+          <h2 className="text-3xl font-bold mb-4">Your Score: {score}/{questions.length}</h2>
+          <p className="mb-4">Questions marked for review: {markedForReview.length > 0 ? markedForReview.length : 'None'}</p>
+          <button
+            className="bg-blue-600 hover:bg-blue-800 text-white px-4 py-2 rounded shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105"
+            onClick={() => window.location.reload()}
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
   }
 
   const currentQuestion = questions[currentQuestionIndex];
+  const questionNumber = currentQuestionIndex + 1;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-custom p-4 mt-14">
-      <div className="bg-customLight rounded-lg shadow-lg w-full max-w-6xl">
-        <div className="p-4 border-b">
-          <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold">MCT Mock Tests</h2>
-            <span>Session 1</span>
-          </div>
-          <div className="mt-2 flex justify-between items-center">
-            <div className="w-full bg-gray-300 rounded-full h-2.5">
-              <div className="bg-purple-700 h-2.5 rounded-full" style={{ width: `${(currentQuestionIndex / questions.length) * 100}%` }}></div>
-            </div>
-            <div className="ml-4 flex items-center">
-              <button className="mr-2 px-2 py-1 bg-gray-200 rounded text-blue-500">Review</button>
-              <button className="px-2 py-1 bg-gray-200 rounded text-sm">Mark Review</button>
-            </div>
-            <div className="ml-4 text-blue-500">{formatTime(secondsElapsed)} Min</div>
-          </div>
-        </div>
-        <div className="p-4">
-          <h3 className="text-lg mb-4">Question {currentQuestionIndex + 1}</h3>
-          <p className="mb-4">{currentQuestion.question}</p>
-          <form>
-            {Object.keys(currentQuestion.answers).map((key) => {
-              const answer = currentQuestion.answers[key];
-              if (answer) {
-                return (
-                  <div key={key} className="mb-4">
-                    <input type="radio" id={key} name="answer" className="mr-2" />
-                    <label htmlFor={key} className="cursor-pointer">{answer}</label>
-                  </div>
-                );
-              }
-              return null;
-            })}
-          </form>
-        </div>
-        <div className="p-4 border-t flex justify-between">
+    <div className="flex flex-col items-center bg-gradient-to-r from-gray-800 via-gray-900 to-black min-h-screen p-8 mt-4">
+      <div className="bg-gray-800 text-white h-16 w-full flex justify-between items-center px-8 mt-4 border-t-2 border-yellow-200 rounded-xl">
+        <div className="text-2xl font-bold">Time Left: {timeLeft}s</div>
+        <div className="text-xl">Marked for Review: {markedForReview.length}</div>
+        <div>
           <button
-            className="px-4 py-2 bg-blue-500 rounded text-white border-b-2 border-t-2 border-r-2 border-orange-300"
-            onClick={() => setCurrentQuestionIndex((prev) => Math.max(prev - 1, 0))}
-            disabled={currentQuestionIndex === 0}
+            className="bg-pink-500 hover:bg-pink-700 text-white px-4 py-2 rounded shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105"
+            onClick={handleMarkForReview}
           >
-            Previous
+            Mark for Review
           </button>
           <button
-            className="px-4 py-2 bg-blue-500 text-white rounded"
-            onClick={() => setCurrentQuestionIndex((prev) => Math.min(prev + 1, questions.length - 1))}
-            disabled={currentQuestionIndex === questions.length - 1}
+            className="bg-yellow-500 hover:bg-yellow-700 text-white px-4 py-2 rounded shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105 ml-4"
+            onClick={handleReviewQuestions}
+            disabled={markedForReview.length === 0}
           >
-            Next
+            Review Questions
           </button>
-          <button className="px-4 py-2 bg-blue-500 text-white rounded" onClick={handleFinish}>Finish</button>
         </div>
       </div>
-
-      {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-red-500 p-8 rounded shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">Confirm Submission</h2>
-            <p className="mb-4">Are you sure you want to finish the test? Once submitted, you cannot make any changes.</p>
-            <div className="flex justify-end">
+      <div className="w-full max-w-4xl mt-8">
+        <AnimatePresence>
+          <motion.div
+            key={currentQuestionIndex}
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="question-box bg-black text-white p-8 rounded-lg shadow-lg"
+          >
+            <motion.h2
+              key={currentQuestionIndex}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="text-3xl font-bold mb-4 text-gradient bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-blue-500"
+            >
+              Question {questionNumber}
+            </motion.h2>
+            <motion.p
+              key={currentQuestion.statement}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="text-xl font-semibold mb-4 text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-pink-500"
+            >
+              {currentQuestion.statement}
+            </motion.p>
+            <p className="text-lg font-semibold mb-6">{currentQuestion.question}</p>
+            <div className="space-y-4">
+              {currentQuestion.options.map((option, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleAnswerSelect(index)}
+                  className={`w-full px-4 py-2 text-left border rounded-lg ${
+                    selectedAnswer === index
+                      ? 'bg-blue-600 text-white'
+                      : 'text-white hover:text-green-500 hover:bg-gray-800'
+                  } shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105`}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+            <div className="mt-4 flex justify-between">
               <button
-                className="px-4 py-2 bg-gray-300 rounded mr-2"
-                onClick={() => setShowModal(false)}
+                className="neon-button neon-button-primary neon-shadow px-4 py-2 rounded text-white font-bold"
+                onClick={handlePreviousQuestion}
+                disabled={currentQuestionIndex === 0}
               >
-                Cancel
+                Previous
               </button>
               <button
-                className="px-4 py-2 bg-blue-500 text-white rounded"
-                onClick={confirmFinish}
+                className="neon-button neon-button-primary neon-shadow px-4 py-2 rounded-lg text-white font-bold"
+                onClick={handleNextQuestion}
+                disabled={selectedAnswer === null}
               >
-                Confirm
+                Next
               </button>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
   );
 };

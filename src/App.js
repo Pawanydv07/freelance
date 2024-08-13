@@ -54,7 +54,7 @@ function App() {
       </Routes>
       {/* <BunnyCDNFetch/> */}
       <Footer />
-      <Quiz/>
+      {/* <Quiz/> */}
       {/* <Flying /> */}
       {/* <IntroPage /> */}
     </div>
