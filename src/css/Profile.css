@@ -1,7 +1,7 @@
 .glow-box {
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out; /* Slowed down the overall transition */
   }
   
   .glow-box::before {
@@ -13,7 +13,7 @@
     height: 200%;
     background: radial-gradient(circle, #ffffff, rgba(255, 255, 255, 0) 60%);
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 1s ease-in-out; /* Slowed down the opacity transition */
     pointer-events: none;
   }
   
@@ -30,7 +30,7 @@
     left: -25%;
     background: transparent;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    animation: sparkle 1.5s infinite linear;
+    animation: sparkle 5s infinite linear; /* Slowed down the sparkle animation */
     opacity: 0;
     pointer-events: none;
   }

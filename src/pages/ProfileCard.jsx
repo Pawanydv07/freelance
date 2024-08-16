@@ -1,14 +1,16 @@
 import React from "react";
-import '../css/Profile.css';  // You can create a CSS file to manage these styles
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBrain, faCode, faUsers, faCrown } from "@fortawesome/free-solid-svg-icons";
+import '../css/Profile.css';
 
 const ProfilePage = () => {
   return (
-    <div className="bg-gray-900 text-white min-h-screen p-6 flex justify-center items-center">
+    <div className="bg-gray-900 text-white min-h-screen p-6 flex justify-center items-center mt-10">
       <div className="max-w-4xl w-full">
-        {/* Employee Details Section */}
+        {/* Student Details Section */}
         <div className="glow-box bg-gray-800 rounded-lg p-6 shadow-lg transform transition-transform hover:scale-105">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold">Employee Details</h2>
+            <h2 className="text-lg font-semibold">Student Dashboard</h2>
             <button className="bg-green-500 text-white px-4 py-2 rounded-lg transform transition-transform hover:scale-110">
               Download Info
             </button>
@@ -80,6 +82,30 @@ const ProfilePage = () => {
             </div>
           </div>
         </div>
+
+        {/* Badges Section */}
+        <div className="glow-box bg-gray-800 rounded-lg p-6 shadow-lg mt-6 transform transition-transform hover:scale-105">
+          <h2 className="text-lg font-semibold mb-4">Badges</h2>
+          <div className="grid grid-cols-4 gap-4">
+            <div className="glow-box bg-gray-700 p-4 rounded-lg text-center transform transition-transform hover:scale-105">
+              <FontAwesomeIcon icon={faBrain} className="text-4xl text-green-500 mb-2" />
+              <p className="text-2xl font-bold">Aptitude Reasoning</p>
+            </div>
+            <div className="glow-box bg-gray-700 p-4 rounded-lg text-center transform transition-transform hover:scale-105">
+              <FontAwesomeIcon icon={faCode} className="text-4xl text-green-500 mb-2" />
+              <p className="text-2xl font-bold">Coding Challenges</p>
+            </div>
+            <div className="glow-box bg-gray-700 p-4 rounded-lg text-center transform transition-transform hover:scale-105">
+              <FontAwesomeIcon icon={faUsers} className="text-4xl text-green-500 mb-2" />
+              <p className="text-2xl font-bold">Team Collaboration</p>
+            </div>
+            <div className="glow-box bg-gray-700 p-4 rounded-lg text-center transform transition-transform hover:scale-105">
+              <FontAwesomeIcon icon={faCrown} className="text-4xl text-green-500 mb-2" />
+              <p className="text-2xl font-bold">Leadership</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );
