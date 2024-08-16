@@ -2,7 +2,7 @@ import React from 'react';
 import logo from "../assets/logo.png"
 const Footer = () => {
   return (
-    <footer className="bg-slate-900 border-t mt-10">
+    <footer className="bg-slate-900  ">
       <div className="container mx-auto px-4 py-6 flex justify-between items-center">
         <div className="text-white">
          
