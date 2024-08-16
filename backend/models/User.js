@@ -1,17 +1,16 @@
 const mongoose = require('mongoose');
 
-const QuizSchema = new mongoose.Schema({
-  title: String,
-  questions: [{
-    question: String,
-    options: [String],
-    answer: String,
-  }],
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  score: Number,
+const userSchema = new mongoose.Schema({
+  firebaseId: { type: String, required: true, unique: true },
+  name: { type: String },
+  score: { type: Number },
+  designation: { type: String },
+  location: { type: String },
+  linkedin: { type: String },
+  bio: { type: String },
+  additionalDetails: { type: Map, of: String },
 });
 
-module.exports = mongoose.model('Quiz', QuizSchema);
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;

@@ -1,51 +1,113 @@
-const passport = require('passport');
+// controllers/authController.js
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const verifyGoogleToken = require('../config/googleAuth');
+require('dotenv').config();
 
-exports.register = (req, res) => {
-  User.register(new User({ username: req.body.username }), req.body.password, (err, user) => {
-    if (err) {
-      return res.status(500).send(err.message);
+// Register Controller
+exports.register = async (req, res) => {
+  const { name, email, password } = req.body;
+
+  try {
+    let user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).json({ msg: 'User already exists' });
     }
-    passport.authenticate('local')(req, res, () => {
-      res.send('Registered');
+
+    user = new User({
+      name,
+      email,
+      password,
     });
-  });
-};
 
-exports.login = (req, res) => {
-  passport.authenticate('local', (err, user, info) => {
-    if (err) {
-      return res.status(500).send(err.message);
-    }
-    if (!user) {
-      return res.status(400).send('Invalid credentials');
-    }
-    req.logIn(user, (err) => {
-      if (err) {
-        return res.status(500).send(err.message);
-      }
-      res.send('Logged in');
+    await user.save();
+    const payload = { user: { id: user.id } };
+    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5h' }, (err, token) => {
+      if (err) throw err;
+      res.json({ token });
     });
-  })(req, res);
-};
-
-exports.logout = (req, res, next) => {
-  req.logout((err) => {
-    if (err) {
-      return next(err);
-    }
-    res.send('Logged out');
-  });
-};
-
-exports.profile = (req, res) => {
-  if (!req.isAuthenticated()) {
-    return res.status(401).send('You need to log in first');
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
   }
-  User.findById(req.user._id).populate('quizzes').exec((err, user) => {
-    if (err) {
-      return res.status(500).send(err.message);
+};
+
+// Login Controller
+exports.login = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ msg: 'Invalid Credentials' });
     }
-    res.json(user);
-  });
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ msg: 'Invalid Credentials' });
+    }
+
+    const payload = { user: { id: user.id } };
+    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5h' }, (err, token) => {
+      if (err) throw err;
+      res.json({ token });
+    });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+};
+
+// Google Auth Controller
+exports.googleAuth = async (req, res) => {
+  const { token } = req.body;
+
+  try {
+    const googleUser = await verifyGoogleToken(token);
+    let user = await User.findOne({ email: googleUser.email });
+
+    if (!user) {
+      user = new User({
+        name: googleUser.name,
+        email: googleUser.email,
+        googleId: googleUser.sub,
+      });
+      await user.save();
+    }
+
+    const payload = { user: { id: user.id } };
+    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5h' }, (err, token) => {
+      if (err) throw err;
+      res.json({ token });
+    });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+};
+
+// Forgot Password Controller
+exports.forgotPassword = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ msg: 'User not found' });
+    }
+
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    user.resetPasswordToken = token;
+    user.resetPasswordExpire = Date.now() + 3600000; // 1 hour
+    await user.save();
+
+    // Here you can send an email using Firebase or any email service
+    // await sendResetEmail(email, token);
+
+    res.status(200).json({ msg: 'Password reset link sent' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
 };

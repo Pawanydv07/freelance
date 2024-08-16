@@ -1,11 +1,23 @@
+// routes/auth.js
 const express = require('express');
-const authController = require('../controllers/authController');
-
+const {
+  register,
+  login,
+  googleAuth,
+  forgotPassword,
+} = require('../controllers/authController');
 const router = express.Router();
 
-router.post('/register', authController.register);
-router.post('/login', authController.login);
-router.get('/logout', authController.logout);
-router.get('/profile', authController.profile);
+// Register Route
+router.post('/register', register);
+
+// Login Route
+router.post('/login', login);
+
+// Google Auth Route
+router.post('/google', googleAuth);
+
+// Forgot Password Route
+router.post('/forgot-password', forgotPassword);
 
 module.exports = router;
