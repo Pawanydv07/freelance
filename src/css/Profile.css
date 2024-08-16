@@ -1,0 +1,52 @@
+.glow-box {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .glow-box::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, #ffffff, rgba(255, 255, 255, 0) 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+  }
+  
+  .glow-box:hover::before {
+    opacity: 0.5;
+  }
+  
+  .glow-box::after {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    background: transparent;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    animation: sparkle 1.5s infinite linear;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .glow-box:hover::after {
+    opacity: 1;
+  }
+  
+  @keyframes sparkle {
+    0%, 100% {
+      transform: rotate(0deg);
+      opacity: 1;
+    }
+    50% {
+      transform: rotate(360deg);
+      opacity: 0.5;
+    }
+  }
+  
