@@ -24,4 +24,9 @@
     z-index: 10; /* Ensures the video is on top */
     background: black; /* Background to handle loading state */
   }
+
+  .main-div{
+    padding-bottom: 2rem;
+    /* background-image: linear-gradient(#000428,#004e92) */
+  }
   

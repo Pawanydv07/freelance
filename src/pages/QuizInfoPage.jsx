@@ -54,7 +54,7 @@ const QuizInfoPage = () => {
   }, []);
 
   return (
-    <div className={`min-h-screen  flex flex-col items-center justify-center bg-gradient-to-r from-[#000428] to-[#004e92] text-white ${startQuiz ? 'page-turn' : ''}`}>
+    <div className={`min-h-screen  flex flex-col items-center justify-center bg-gradient-to-r from-[#000428] to-[#004e92] text-white ${startQuiz ? 'page-turn' : '' } main-div`}>
       <div className="w-full max-w-6xl mt-20 min-h-screen-1/2 bg-white rounded-lg shadow-md p-8 text-gray-800">
         <h1 className="text-3xl font-bold mb-4">Quiz Instructions</h1>
         <p className="mb-4">
