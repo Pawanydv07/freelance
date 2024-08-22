@@ -66,7 +66,7 @@ const Navbar = () => {
               Courses
             </Link>
             <Link
-              to="/classes"
+              to="/lectures"
               className="text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               Class

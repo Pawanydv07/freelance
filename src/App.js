@@ -20,8 +20,9 @@ import ProgrammingAp from "./pages/ProgrammingAp";
 import Team from "./pages/Team";
 import ThankYouPage from "./pages/ThankYouPage";
 import QuestionGeneratorPage from "./pages/QuestionGeneratorPage";
-import BunnyCDNFetch from "./components/BunnyCdn";
-import Quiz from "./pages/Quiz";
+// import BunnyCDNFetch from "./components/BunnyCdn";
+
+import Lecture from "./pages/Lecture";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="/programming" element={<ProgrammingAp />} />
         <Route path="/thank-you"element={<ThankYouPage/>}/>
         <Route path="/generate-questions" element={<QuestionGeneratorPage />} />
+        <Route path="/lectures"element={<Lecture/>}/>
         {/* Routes for each course detail page */}
         {/* <Route path="/react" element={<CourseDetailReact />} /> */}
         {/* <Route path="/javascript" element={<CourseDetailJavaScript />} />
