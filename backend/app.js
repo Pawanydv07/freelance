@@ -2,13 +2,13 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const passport = require('./config/passport'); // Passport configuration
+
 require('dotenv').config();
 
 const connectDB = require('./config/db');
-const authRoutes = require('./routes/auth');
+// const authRoutes = require('./routes/auth');
 const questionRoutes = require('./routes/questionRoutes');
-const userRoutes = require('./routes/UserRoutes'); // Ensure correct import
+// const userRoutes = require('./routes/UserRoutes'); // Ensure correct import
 
 const app = express();
 
@@ -28,14 +28,14 @@ app.use(session({
   cookie: { secure: false } // Set to true if using HTTPS
 }));
 
-// Passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
+// // Passport middleware
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // Routes
-app.use('/api/auth', authRoutes);
+// app.use('/api/auth', authRoutes);
 app.use('/api/questions', questionRoutes);
-app.use('/api/users', userRoutes); // Ensure this is correctly used
+// app.use('/api/users', userRoutes); // Ensure this is correctly used
 
 // Error handling middleware
 app.use((err, req, res, next) => {
