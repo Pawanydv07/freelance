@@ -5,7 +5,7 @@ import vid1 from "../assets/quant.mp4";
 import vid2 from "../assets/logical18-20.mp4";
 import vid3 from "../assets/logical5.mp4";
 import vid4 from "../assets/LogicalReasoning.mp4";
-import vid5 from "../assets/nonverbal2.mp4";
+import vid5 from "../assets/nonverbal1.mp4";
 import vid6 from "../assets/nonverbal2.mp4";
 import '../css/video.css';
 
