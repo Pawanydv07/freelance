@@ -20,7 +20,7 @@ const ProfilePage = () => {
   return (
     <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-gray-100 p-4 space-y-4 md:space-y-0 md:space-x-6 mt-12">
       {/* Left Section */}
-      <div className="w-full md:w-1/3 bg-white shadow-lg rounded-lg p-6">
+      <div className="w-full md:w-1/3 bg-white shadow-lg rounded-lg p-2 min-h-screen">
         <div className="mb-4">
           <h1 className="text-2xl font-bold text-blue-600 mb-1">
             Hey {user ? user.displayName : "User"},
@@ -69,20 +69,30 @@ const ProfilePage = () => {
       </div>
 
       {/* Right Section */}
-      <div className="w-full md:w-2/3 grid grid-cols-2 gap-4 mt-10">
+      <div className="w-full md:w-2/3 grid grid-cols-2 gap-4 mt-4">
         {/* Score Card */}
-        <div className="bg-white shadow-lg rounded-lg p-4 text-center">
-          <div className="text-xl font-semibold text-blue-600">Percentile</div>
-          <div className="text-4xl font-bold text-blue-600">96.5</div>
+        {/* Score Card */}
+        <div className="bg-white shadow-lg rounded-lg p-4 text-center flex items-center justify-center flex-col h-full">
+          {/* Circular Progress */}
+          <div className="relative flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-b from-blue-600 to-blue-400 mb-4">
+            {/* Inner Circle */}
+            <div className="flex items-center justify-center w-20 h-20 bg-white rounded-full">
+              <span className="text-blue-600 font-semibold text-lg">96.5</span>
+            </div>
+          </div>
+
+          <p className="text-lg font-semibold text-gray-800">72</p>
           <p className="text-sm text-gray-500">Your Score</p>
-          <div className="mt-2 text-gray-600">
+
+          {/* Additional Details */}
+          <div className="mt-2 text-gray-600 text-sm">
             <p>
               Result Percentile:{" "}
               <span className="font-semibold text-blue-600">96.5</span>
             </p>
             <p>
               Your Accuracy:{" "}
-              <span className="font-semibold text-blue-600">60%</span>
+              <span className="font-semibold text-blue-600">60</span>
             </p>
             <p>
               Negative Marks:{" "}
@@ -92,21 +102,23 @@ const ProfilePage = () => {
         </div>
 
         {/* All India Rank Card */}
-        <div className="bg-white shadow-lg rounded-lg p-4 text-center mt-8 relative overflow-hidden">
+        <div className="bg-white shadow-lg rounded-lg p-4 text-center mt-8 relative overflow-hidden h-full">
           {/* Background India Map */}
           <div
-            className="absolute inset-0 opacity-20 bg-contain bg-center"
+            className="absolute inset-0 bg-no-repeat bg-center opacity-20"
             style={{
               backgroundImage: `url(${indiamap})`,
-              backgroundSize: "fit",
+              backgroundSize: "60%",
+              backgroundPosition: "center",
             }}
           ></div>
 
-          <div className="relative z-10">
-            <div className="text-lg font-semibold text-orange-600">
+          {/* Rank Information Overlay */}
+          <div className="relative z-10 flex flex-col items-center">
+            <p className="text-sm font-semibold text-gray-600 mb-1">
               All India Rank
-            </div>
-            <div className="text-4xl font-bold text-orange-600">414</div>
+            </p>
+            <p className="text-4xl font-bold text-orange-600">414</p>
           </div>
         </div>
 
@@ -131,22 +143,40 @@ const ProfilePage = () => {
         </div>
 
         {/* Section-wise Scores */}
-        <div className="bg-white shadow-lg rounded-lg p-4 text-center">
-          <div className="text-xl font-semibold text-blue-600">99.9</div>
-          <p className="text-lg mt-2">VARC</p>
+        <div className="bg-white shadow-lg rounded-lg p-4 text-center flex items-center justify-center flex-col">
+          {/* Circular Progress for VARC */}
+          <div className="relative flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-b from-blue-600 to-blue-400 mb-4">
+            {/* Inner Circle for VARC */}
+            <div className="flex items-center justify-center w-20 h-20 bg-white rounded-full">
+              <span className="text-blue-600 font-semibold text-lg">99.9</span>
+            </div>
+          </div>
+          <p className="text-lg font-semibold text-gray-800">VARC</p>
           <p className="text-sm text-gray-500">Your Score: 49</p>
         </div>
-        <div className="bg-white shadow-lg rounded-lg p-4 text-center">
-          <div className="text-xl font-semibold text-blue-600">75</div>
-          <p className="text-lg mt-2">LRDI</p>
+
+        <div className="bg-white shadow-lg rounded-lg p-4 text-center flex items-center justify-center flex-col">
+          {/* Circular Progress for LRDI */}
+          <div className="relative flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-b from-blue-600 to-blue-400 mb-4">
+            {/* Inner Circle for LRDI */}
+            <div className="flex items-center justify-center w-20 h-20 bg-white rounded-full">
+              <span className="text-blue-600 font-semibold text-lg">75</span>
+            </div>
+          </div>
+          <p className="text-lg font-semibold text-gray-800">LRDI</p>
           <p className="text-sm text-gray-500">Your Score: 11</p>
         </div>
-        <div className="bg-white shadow-lg rounded-lg p-4 text-center">
-          <div className="text-xl font-semibold text-blue-600">85</div>
-          <p className="text-lg mt-2">Quant</p>
+        <div className="bg-white shadow-lg rounded-lg p-4 text-center flex items-center justify-center flex-col">
+          {/* Circular Progress for Quant */}
+          <div className="relative flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-b from-blue-600 to-blue-400 mb-4">
+            {/* Inner Circle for Quant */}
+            <div className="flex items-center justify-center w-20 h-20 bg-white rounded-full">
+              <span className="text-blue-600 font-semibold text-lg">85</span>
+            </div>
+          </div>
+          <p className="text-lg font-semibold text-gray-800">Quant</p>
           <p className="text-sm text-gray-500">Your Score: 12</p>
         </div>
-
         {/* Community Posting Card */}
         <div className="col-span-2 bg-white shadow-lg rounded-lg p-4 text-center">
           <p className="text-lg font-medium text-gray-700 mb-2">
