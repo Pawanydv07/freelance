@@ -1,79 +1,44 @@
-.glow-box {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s ease-in-out; /* Slowed down the overall transition */
-  }
-  
-  .glow-box::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, #ffffff, rgba(255, 255, 255, 0) 60%);
-    opacity: 0;
-    transition: opacity 1s ease-in-out; /* Slowed down the opacity transition */
-    pointer-events: none;
-  }
-  
-  .glow-box:hover::before {
-    opacity: 0.5;
-  }
-  
-  .glow-box::after {
-    content: "";
-    position: absolute;
-    width: 150%;
-    height: 150%;
-    top: -25%;
-    left: -25%;
-    background: transparent;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    animation: sparkle 5s infinite linear; /* Slowed down the sparkle animation */
-    opacity: 0;
-    pointer-events: none;
-  }
-  
-  .glow-box:hover::after {
-    opacity: 1;
-  }
-  
-  @keyframes sparkle {
-    0%, 100% {
-      transform: rotate(0deg);
-      opacity: 1;
-    }
-    50% {
-      transform: rotate(360deg);
-      opacity: 0.5;
-    }
-  }
-  .glow-box-3d {
-    perspective: 1000px;
-    transition: all 0.6s ease-in-out;
-  }
-  
-  .glow-box-3d .inner-3d {
-    transform: rotateY(0deg) rotateX(0deg) translateZ(0px);
-    transition: transform 0.6s ease-in-out, background-color 0.6s ease-in-out, box-shadow 0.6s ease-in-out;
-  }
-  
-  .glow-box-3d:hover .inner-3d {
-    transform: rotateY(10deg) rotateX(10deg) translateZ(10px);
-    background-color: #4c51bf; /* Smooth color transition */
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-  }
-  
-  .glow-box-3d:hover .inner-3d p {
-    color: #ffffff; /* Smooth color transition for text */
-  }
-  
-  .inner-3d {
-    background-color: #2d3748; /* Initial background color */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  
+.profile-container {
+  display: flex;
+  width: 100%;
+}
+
+.profile-left {
+  width: 40%;
+}
+
+.profile-right {
+  width: 60%;
+}
+
+.score-btn {
+  display: block;
+  margin: 0 auto;
+  font-weight: 600;
+}
+
+.analysis-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.option-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.option-card p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.arrow {
+  font-size: 1.5rem;
+  color: #007aff;
+}

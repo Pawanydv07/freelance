@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Draggable from 'react-draggable';
 import '../css/QuizInfoPage.css';
 
 const QuizInfoPage = () => {
@@ -24,8 +25,12 @@ const QuizInfoPage = () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
       streamRef.current = stream;
-      videoRef.current.srcObject = stream;
-      videoRef.current.play();
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        await videoRef.current.play().catch((error) => {
+          console.error('Error trying to play video:', error);
+        });
+      }
       setPermissionGranted(true);
     } catch (err) {
       console.error('Permission denied:', err);
@@ -54,7 +59,7 @@ const QuizInfoPage = () => {
   }, []);
 
   return (
-    <div className={`min-h-screen  flex flex-col items-center justify-center bg-gradient-to-r from-[#000428] to-[#004e92] text-white ${startQuiz ? 'page-turn' : '' } main-div`}>
+    <div className={`min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#000428] to-[#004e92] text-white ${startQuiz ? 'page-turn' : ''} main-div`}>
       <div className="w-full max-w-6xl mt-20 min-h-screen-1/2 bg-white rounded-lg shadow-md p-8 text-gray-800">
         <h1 className="text-3xl font-bold mb-4">Quiz Instructions</h1>
         <p className="mb-4">
@@ -101,15 +106,17 @@ const QuizInfoPage = () => {
           </label>
         </div>
         {permissionGranted && (
-          <div className="mb-4 relative">
-            <video ref={videoRef} className="live-video" autoPlay />
-            <button
-              className="mt-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded"
-              onClick={takePhoto}
-            >
-              Take Photo
-            </button>
-          </div>
+          <Draggable>
+            <div className="draggable-video mb-4 relative">
+              <video ref={videoRef} className="live-video rounded-md border border-gray-300 shadow-lg" autoPlay muted playsInline />
+              <button
+                className="mt-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded"
+                onClick={takePhoto}
+              >
+                Take Photo
+              </button>
+            </div>
+          </Draggable>
         )}
         <button
           className={`px-4 py-2 rounded ${agreed ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-gray-400 cursor-not-allowed'}`}

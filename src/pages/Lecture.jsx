@@ -1,4 +1,3 @@
-// src/components/VideoLecturePage.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import vid1 from "../assets/quant.mp4";
@@ -15,210 +14,118 @@ const fadeIn = {
 };
 
 const colorChange = {
-  hidden: { color: "#ffffff" },
-  visible: { color: "#00FF00" }, // Change to your desired color
+  hidden: { color: "#333333" },
+  visible: { color: "#007BFF" },
+};
+
+const sectionVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      duration: 0.8,
+    },
+  },
+};
+
+const videoHover = {
+  hover: {
+    scale: 1.05,
+    boxShadow: "0 8px 20px rgba(0, 123, 255, 0.5)",
+    transition: { duration: 0.3 },
+  },
 };
 
 const logicalReasoningVideos = [
-  {
-    src: vid1,
-    title: "Introduction to Logical Reasoning",
-    description: "This video introduces the basics of logical reasoning, covering fundamental techniques and strategies to approach logical problems.",
-  },
-  {
-    src: vid2,
-    title: "Advanced Logical Reasoning Techniques",
-    description: "Explore advanced techniques in logical reasoning, including complex problem-solving strategies and examples.",
-  },
-  {
-    src: vid3,
-    title: "Logical Reasoning Practice Questions",
-    description: "This lecture provides practice questions and solutions to help solidify your understanding of logical reasoning concepts.",
-  },
-  {
-    src: vid4,
-    title: "Logical Reasoning in Real Life",
-    description: "Learn how logical reasoning can be applied in real-life scenarios and decision-making processes.",
-  },
+  { src: vid1, title: "Introduction to Logical Reasoning", description: "Learn the basics of logical reasoning." },
+  { src: vid2, title: "Advanced Logical Reasoning Techniques", description: "Explore advanced problem-solving strategies." },
+  { src: vid3, title: "Logical Reasoning Practice Questions", description: "Practice and solidify logical reasoning concepts." },
+  { src: vid4, title: "Logical Reasoning in Real Life", description: "Apply logical reasoning to real-life scenarios." },
 ];
 
 const nonVerbalPatternVideos = [
-  {
-    src: vid5,
-    title: "Introduction to Non-Verbal Patterns",
-    description: "This video covers the basics of non-verbal patterns, including key concepts and techniques.",
-  },
-  {
-    src: vid6,
-    title: "Advanced Non-Verbal Pattern Techniques",
-    description: "Learn advanced techniques for solving non-verbal pattern problems and enhancing your skills.",
-  },
-
+  { src: vid5, title: "Introduction to Non-Verbal Patterns", description: "Basics of non-verbal patterns and techniques." },
+  { src: vid6, title: "Advanced Non-Verbal Pattern Techniques", description: "Solve advanced non-verbal pattern problems." },
 ];
 
 const Lecture = () => {
   return (
-    <div className="flex flex-col items-center p-8 bg-gray-900 min-h-screen text-white mt-12">
-      {/* Logical Reasoning Section */}
+    <div className="flex flex-col items-center p-6 bg-white min-h-screen text-black">
       <motion.div
         initial="hidden"
         animate="visible"
-        variants={fadeIn}
-        transition={{ duration: 0.8 }}
-        className="w-full max-w-4xl mb-24"
+        variants={sectionVariants}
+        className="w-full max-w-5xl mb-24"
       >
-        <motion.h1
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          transition={{ duration: 0.8 }}
-          className="text-4xl font-bold mb-6"
-        >
-          <motion.span
-            initial="hidden"
-            animate="visible"
-            variants={colorChange}
-            transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-          >
-            Logical Reasoning
-          </motion.span>
-        </motion.h1>
-        <motion.p
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-gray-400 mb-12 text-center"
-        >
-          This section covers various aspects of logical reasoning, including introductory concepts, advanced techniques, practice questions, and real-life applications.
-        </motion.p>
-        <div className="space-y-12">
-          {logicalReasoningVideos.map((video, index) => (
-            <div key={index}>
-              <motion.video
-                initial="hidden"
-                whileInView="visible"
-                variants={fadeIn}
-                transition={{ duration: 0.8 }}
-                className="w-full rounded-lg shadow-lg video-glow"
-                controls
-                src={video.src}
-                type="video/mp4"
-              >
-                Your browser does not support the video tag.
-              </motion.video>
-              <motion.h2
-                initial="hidden"
-                animate="visible"
-                variants={fadeIn}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-2xl font-semibold mt-4"
-              >
-                <motion.span
-                  initial="hidden"
-                  animate="visible"
-                  variants={colorChange}
-                  transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-                >
-                  {video.title}
-                </motion.span>
-              </motion.h2>
-              <motion.p
-                initial="hidden"
-                animate="visible"
-                variants={fadeIn}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-gray-400 mt-2"
-              >
-                {video.description}
-              </motion.p>
-            </div>
-          ))}
-        </div>
+        <SectionTitle title="Logical Reasoning" />
+        <VideoList videos={logicalReasoningVideos} />
       </motion.div>
 
-      {/* Separator Line */}
-      <div className="w-full max-w-4xl border-t-2 border-gray-700 my-16"></div>
+      <div className="w-full max-w-5xl border-t-2 border-gray-300 my-16"></div>
 
-      {/* Non-Verbal Pattern Section */}
       <motion.div
         initial="hidden"
         animate="visible"
-        variants={fadeIn}
-        transition={{ duration: 0.8 }}
-        className="w-full max-w-4xl"
+        variants={sectionVariants}
+        className="w-full max-w-5xl"
       >
-        <motion.h1
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-4xl font-bold mb-6"
-        >
-          <motion.span
-            initial="hidden"
-            animate="visible"
-            variants={colorChange}
-            transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-          >
-            Non-Verbal Pattern
-          </motion.span>
-        </motion.h1>
-        <motion.p
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-gray-400 mb-12 text-center"
-        >
-          This section delves into non-verbal patterns, exploring foundational concepts, advanced techniques, practice questions, and real-life applications.
-        </motion.p>
-        <div className="space-y-12">
-          {nonVerbalPatternVideos.map((video, index) => (
-            <div key={index}>
-              <motion.video
-                initial="hidden"
-                whileInView="visible"
-                variants={fadeIn}
-                transition={{ duration: 0.8 }}
-                className="w-full rounded-lg shadow-lg video-glow"
-                controls
-                src={video.src}
-                type="video/mp4"
-              >
-                Your browser does not support the video tag.
-              </motion.video>
-              <motion.h2
-                initial="hidden"
-                animate="visible"
-                variants={fadeIn}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-2xl font-semibold mt-4"
-              >
-                <motion.span
-                  initial="hidden"
-                  animate="visible"
-                  variants={colorChange}
-                  transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-                >
-                  {video.title}
-                </motion.span>
-              </motion.h2>
-              <motion.p
-                initial="hidden"
-                animate="visible"
-                variants={fadeIn}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-gray-400 mt-2"
-              >
-                {video.description}
-              </motion.p>
-            </div>
-          ))}
-        </div>
+        <SectionTitle title="Non-Verbal Pattern" />
+        <VideoList videos={nonVerbalPatternVideos} />
       </motion.div>
     </div>
   );
 };
+
+const SectionTitle = ({ title }) => (
+  <motion.h1
+    initial="hidden"
+    animate="visible"
+    variants={fadeIn}
+    className="text-4xl font-extrabold text-center mb-8"
+  >
+    <motion.span
+      initial="hidden"
+      animate="visible"
+      variants={colorChange}
+      transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+      className="bg-gradient-to-r from-blue-500 to-green-500 bg-clip-text text-transparent"
+    >
+      {title}
+    </motion.span>
+  </motion.h1>
+);
+
+const VideoList = ({ videos }) => (
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+    {videos.map((video, index) => (
+      <motion.div
+        key={index}
+        className="video-card p-4 bg-gray-100 rounded-lg shadow-md hover:shadow-lg"
+        variants={fadeIn}
+        whileHover={videoHover.hover}
+      >
+        <motion.video
+          className="w-full rounded-lg shadow-xl"
+          controls
+          src={video.src}
+          type="video/mp4"
+        />
+        <motion.h2
+          className="text-2xl font-semibold mt-4 text-black hover:text-blue-500"
+          variants={fadeIn}
+        >
+          {video.title}
+        </motion.h2>
+        <motion.p
+          className="text-gray-600 mt-2 text-sm"
+          variants={fadeIn}
+        >
+          {video.description}
+        </motion.p>
+      </motion.div>
+    ))}
+  </div>
+);
 
 export default Lecture;

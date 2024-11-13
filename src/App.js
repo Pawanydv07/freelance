@@ -24,6 +24,7 @@ import QuestionGeneratorPage from "./pages/QuestionGeneratorPage";
 
 import Lecture from "./pages/Lecture";
 
+
 function App() {
   return (
     <div className="App">
@@ -38,21 +39,16 @@ function App() {
         <Route path="/courses" element={<CoursePage />} />
         <Route path="/classes" element={<Classes />} />
         <Route path="/quiz" element={<QuizPage />} />
-        <Route path="/quiz-info" element={<QuizInfoPage />} /> {/* Add this line */}
+        <Route path="/quiz-info" element={<QuizInfoPage />} />{" "}
+        {/* Add this line */}
         <Route path="/student" element={<StudentDashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/instructors" element={<Team />} />
         <Route path="/programming" element={<ProgrammingAp />} />
-        <Route path="/thank-you"element={<ThankYouPage/>}/>
+        <Route path="/thank-you" element={<ThankYouPage />} />
         <Route path="/generate-questions" element={<QuestionGeneratorPage />} />
-        <Route path="/lectures"element={<Lecture/>}/>
-        {/* Routes for each course detail page */}
-        {/* <Route path="/react" element={<CourseDetailReact />} /> */}
-        {/* <Route path="/javascript" element={<CourseDetailJavaScript />} />
-        <Route path="/html" element={<CourseDetailHTML />} />
-        <Route path="/python" element={<CourseDetailPython />} />
-        <Route path="/nodejs" element={<CourseDetailNodeJS />} />
-        <Route path="/java" element={<CourseDetailJava />} /> */}
+        <Route path="/lectures" element={<Lecture />} />
+        
       </Routes>
       {/* <BunnyCDNFetch/> */}
       <Footer />
