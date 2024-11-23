@@ -22,56 +22,47 @@ const HomeP9 = () => {
 
   const renderStars = (rating) => {
     return [...Array(5)].map((_, i) => (
-      <span key={i} className={`star ${i < rating ? 'filled' : ''}`}>&#9733;</span>
+      <span
+        key={i}
+        className={`star ${i < rating ? 'filled text-yellow-500' : 'text-gray-400'}`}
+      >
+        &#9733;
+      </span>
     ));
   };
 
   return (
-    <div className="student-main">
-      <div className="student-choose text-center">
-        <p className="font-bold text-lg student-text">Why choose us</p>
-        <h1 className="text-5xl student-div">
-          STUDENT'S <span className="gradient-text text-lg">TESTIMONIAL</span>
+    <div className="py-16 px-4 sm:px-8 lg:px-16 bg-gray-50">
+      <div className="text-center mb-16">
+        <p className="font-bold text-lg text-teal-500">Why Choose Us</p>
+        <h1 className="text-4xl font-bold text-gray-800">
+          STUDENT'S <span className="text-teal-500">TESTIMONIAL</span>
         </h1>
       </div>
-      <div className="main-container">
-        <div className="testimonial-half">
-          <div className="testimonial-content">
-            <div className="testimonial-image-container">
-              <img
-                src={testimonials[0].image}
-                alt={testimonials[0].name}
-                className="testimonial-image"
-              />
-            </div>
-            <div className="testimonial-text-container">
-              <p className="testimonial-name">{testimonials[0].name}</p>
-              <div className="testimonial-rating">
-                {renderStars(testimonials[0].rating)}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        {testimonials.map((testimonial) => (
+          <div
+            key={testimonial.id}
+            className="bg-white rounded-lg shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+          >
+            <div className="flex items-center p-6">
+              <div className="w-1/3 pr-4">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="w-20 h-20 object-cover rounded-full"
+                />
               </div>
-              <p className="testimonial-text">{testimonials[0].text}</p>
+              <div className="w-2/3">
+                <p className="text-xl font-semibold text-gray-800">{testimonial.name}</p>
+                <div className="flex items-center mb-4">
+                  {renderStars(testimonial.rating)}
+                </div>
+                <p className="text-gray-600">{testimonial.text}</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="divider"></div>
-        <div className="testimonial-half">
-          <div className="testimonial-content">
-            <div className="testimonial-image-container">
-              <img
-                src={testimonials[1].image}
-                alt={testimonials[1].name}
-                className="testimonial-image"
-              />
-            </div>
-            <div className="testimonial-text-container">
-              <p className="testimonial-name">{testimonials[1].name}</p>
-              <div className="testimonial-rating">
-                {renderStars(testimonials[1].rating)}
-              </div>
-              <p className="testimonial-text">{testimonials[1].text}</p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

@@ -1,41 +1,54 @@
-// src/components/Navbar.js
 import React, { useState, useEffect, Fragment } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, signOut } from "../firebase";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-import logo from "../assets/logo.png"; // Import the logo image
+import logo from "../assets/logonew.jpg"; // Import the logo image
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); // Track user state
   const navigate = useNavigate();
 
+  // Toggle mobile menu visibility
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(null);
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
-
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      setUser(null);
-      navigate("/");
-    } catch (error) {
-      console.error("Error logging out:", error);
+  // Simulate login (you can replace this with your actual login mechanism)
+  const handleLogin = (e, email, password) => {
+    e.preventDefault();
+    if (email && password) {
+      const userData = { displayName: email.split("@")[0], email };
+      setUser(userData); // Simulate user info from email
+      localStorage.setItem('user', JSON.stringify(userData)); // Store user info in localStorage
+    } else {
+      console.log("Invalid credentials");
     }
   };
+
+  // Handle logout
+  const handleLogout = () => {
+    setUser(null); // Clear user state
+    localStorage.removeItem('user'); // Remove user data from localStorage
+    navigate("/"); // Navigate to home page
+  };
+
+  // UseEffect to get user data from localStorage when the component mounts
+  useEffect(() => {
+    // Get the user data from localStorage if logged in
+    const storedUser = localStorage.getItem('user');
+  
+    if (storedUser) {
+      try {
+        // Safely parse storedUser only if it exists and is valid
+        setUser(JSON.parse(storedUser)); // Set user data if available
+      } catch (error) {
+        console.error("Error parsing user data from localStorage:", error);
+      }
+    } else {
+      setUser(null); // If no user data in localStorage, set user to null
+    }
+  }, []); // Empty dependency array ensures this effect runs once on mount
 
   return (
     <nav className="bg-customBlue fixed w-full z-10 top-0 shadow-lg">
@@ -43,47 +56,22 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-10">
           <div className="flex items-center">
             <Link to="/">
-              <img src={logo} alt="LogicalSir Logo" className="h-20 w-20" /> {/* Replace text with logo */}
+              <img src={logo} alt="LogicalSir Logo" className="h-16 w-20" />
             </Link>
           </div>
           <div className="hidden md:flex">
-            <Link
-              to="/"
-              className="text-white px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Home
-            </Link>
-            <Link
-              to="/instructors"
-              className="text-white px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Instructor
-            </Link>
-            <Link
-              to="/courses"
-              className="text-white px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Courses
-            </Link>
-            <Link
-              to="/lectures"
-              className="text-white px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Class
-            </Link>
-            <Link
-              to="/quiz-info"
-              className="text-white px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Quiz
-            </Link>
+            <Link to="/" className="text-white px-3 py-2 rounded-md text-sm font-medium">Home</Link>
+            <Link to="/instructors" className="text-white px-3 py-2 rounded-md text-sm font-medium">Instructor</Link>
+            <Link to="/courses" className="text-white px-3 py-2 rounded-md text-sm font-medium">Courses</Link>
+            <Link to="/lectures" className="text-white px-3 py-2 rounded-md text-sm font-medium">Class</Link>
+            <Link to="/quiz-info" className="text-white px-3 py-2 rounded-md text-sm font-medium">Quiz</Link>
             {!user ? (
-              <Link
-                to="/login"
+              <button
+                onClick={() => navigate("/login")}
                 className="text-white px-3 py-2 rounded-md text-sm font-medium"
               >
                 Login
-              </Link>
+              </button>
             ) : (
               <Menu as="div" className="relative">
                 <Menu.Button className="text-white px-3 py-2 rounded-md text-sm font-medium flex items-center">
@@ -106,9 +94,7 @@ const Navbar = () => {
                           <Link
                             to="/profile"
                             className={`${
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700"
+                              active ? "bg-gray-100 text-gray-900" : "text-gray-700"
                             } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
                           >
                             Profile
@@ -120,9 +106,7 @@ const Navbar = () => {
                           <button
                             onClick={handleLogout}
                             className={`${
-                              active
-                                ? "bg-gray-100 text-gray-900"
-                                : "text-gray-700"
+                              active ? "bg-gray-100 text-gray-900" : "text-gray-700"
                             } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
                           >
                             Logout
@@ -162,42 +146,19 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div
-        className={`${isOpen ? "block" : "hidden"} md:hidden`}
-        id="mobile-menu"
-      >
+      <div className={`${isOpen ? "block" : "hidden"} md:hidden`} id="mobile-menu">
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <Link
-            to="/"
-            className="text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Home
-          </Link>
-          <Link
-            to="/instructors"
-            className="text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Instructor
-          </Link>
-          <Link
-            to="/courses"
-            className="text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Courses
-          </Link>
-          <Link
-            to="/class"
-            className="text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Class
-          </Link>
+          <Link to="/" className="text-white block px-3 py-2 rounded-md text-base font-medium">Home</Link>
+          <Link to="/instructors" className="text-white block px-3 py-2 rounded-md text-base font-medium">Instructor</Link>
+          <Link to="/courses" className="text-white block px-3 py-2 rounded-md text-base font-medium">Courses</Link>
+          <Link to="/lectures" className="text-white block px-3 py-2 rounded-md text-base font-medium">Class</Link>
           {!user ? (
-            <Link
-              to="/login"
+            <button
+              onClick={() => navigate("/login")}
               className="text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Login
-            </Link>
+            </button>
           ) : (
             <Menu as="div" className="relative">
               <Menu.Button className="text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium flex items-center">
@@ -220,9 +181,7 @@ const Navbar = () => {
                         <Link
                           to="/profile"
                           className={`${
-                            active
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-700"
+                            active ? "bg-gray-100 text-gray-900" : "text-gray-700"
                           } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
                         >
                           Profile
@@ -234,9 +193,7 @@ const Navbar = () => {
                         <button
                           onClick={handleLogout}
                           className={`${
-                            active
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-700"
+                            active ? "bg-gray-100 text-gray-900" : "text-gray-700"
                           } flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
                         >
                           Logout

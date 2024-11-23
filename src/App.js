@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 
 import { About, Services } from "./pages";
@@ -23,11 +23,17 @@ import QuestionGeneratorPage from "./pages/QuestionGeneratorPage";
 // import BunnyCDNFetch from "./components/BunnyCdn";
 
 import Lecture from "./pages/Lecture";
-
+import AiPage from "./pages/AiPage";
+import ChatPage from "./pages/ChatPage";
 
 function App() {
+  const location = useLocation();
+
+  // Pages where the footer should be hidden
+  const hideFooterPages = ["/profile", "/aipage","/chat"];
+
   return (
-    <div className="App">
+    <div className="App font-sans">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -40,7 +46,6 @@ function App() {
         <Route path="/classes" element={<Classes />} />
         <Route path="/quiz" element={<QuizPage />} />
         <Route path="/quiz-info" element={<QuizInfoPage />} />{" "}
-        {/* Add this line */}
         <Route path="/student" element={<StudentDashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/instructors" element={<Team />} />
@@ -48,13 +53,11 @@ function App() {
         <Route path="/thank-you" element={<ThankYouPage />} />
         <Route path="/generate-questions" element={<QuestionGeneratorPage />} />
         <Route path="/lectures" element={<Lecture />} />
-        
+        <Route path="/aipage" element={<AiPage />} />
+        <Route path="/chat/:mode" element={<ChatPage />} />
       </Routes>
-      {/* <BunnyCDNFetch/> */}
-      <Footer />
-      {/* <Quiz/> */}
-      {/* <Flying /> */}
-      {/* <IntroPage /> */}
+      {/* Render Footer only if the current path is not in the hideFooterPages */}
+      {!hideFooterPages.includes(location.pathname) && <Footer />}
     </div>
   );
 }

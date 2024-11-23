@@ -86,3 +86,6 @@
   .animate-fly {
     animation: fly 5s linear infinite;
   }
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
