@@ -1,58 +1,91 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import vid1 from "../assets/quant.mp4";
 import vid2 from "../assets/logical18-20.mp4";
 import vid3 from "../assets/logical5.mp4";
 import vid4 from "../assets/LogicalReasoning.mp4";
 import vid5 from "../assets/nonverbal1.mp4";
 import vid6 from "../assets/nonverbal2.mp4";
-import '../css/video.css';
+import "../css/video.css";
 
-// Enhanced Dark Mode Toggle Functionality
 const Lecture = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("darkMode");
+    if (savedTheme) {
+      setIsDarkMode(JSON.parse(savedTheme));
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode((prev) => {
+      const newMode = !prev;
+      localStorage.setItem("darkMode", JSON.stringify(newMode));
+      return newMode;
+    });
+  };
 
   return (
-    <div className={`app-container ${isDarkMode ? 'dark' : 'light'}`}>
-      <div className={`relative min-h-screen ${isDarkMode ? 'bg-gradient-to-r from-gray-800 to-black' : 'bg-gradient-to-r from-gray-50 to-white'} text-black`}>
-        {/* Header Section with Animated Title */}
-        <header className="absolute top-0 w-full py-6 px-8 flex justify-between items-center">
+    <div
+      className={`app-container ${isDarkMode ? "dark" : "light"} mt-[75px]`}
+    >
+      <div
+        className={`relative min-h-screen ${
+          isDarkMode
+            ? "bg-gradient-to-r from-gray-900 to-gray-700 text-white"
+            : "bg-gradient-to-r from-white to-gray-100 text-black"
+        }`}
+      >
+        {/* Header Section */}
+        <header className="sticky top-0 w-full py-6 px-8 flex justify-between items-center bg-opacity-90 backdrop-blur-lg z-50 shadow-md">
           <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2 }}
-            className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500">
+            initial={{ y: -30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.2, delay: 0.3 }}
+            className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-500"
+          >
             Video Tutorials
           </motion.h1>
           <motion.button
             onClick={toggleDarkMode}
-            className="px-6 py-2 bg-blue-600 text-white rounded-full shadow-md hover:bg-blue-700 transition-all">
-            {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+            className="px-6 py-2 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 transition-transform transform hover:scale-110"
+            whileHover={{ scale: 1.1 }}
+          >
+            {isDarkMode ? "Light Mode" : "Dark Mode"}
           </motion.button>
         </header>
 
-        <div className="flex flex-col items-center py-32">
+        {/* Content Section */}
+        <div className="flex flex-col items-center py-16">
+          {/* Logical Reasoning Videos */}
           <motion.div
             initial="hidden"
             animate="visible"
-            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 1.2 } } }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { duration: 1.2 } },
+            }}
             className="w-full max-w-6xl mb-24 text-center"
           >
             <SectionTitle title="Logical Reasoning" />
             <VideoList videos={logicalReasoningVideos} />
           </motion.div>
 
-          <div className="w-full max-w-6xl border-t-2 border-gray-300 my-16"></div>
+          {/* Section Divider */}
+          <div className="w-full max-w-6xl border-t-2 border-gray-400 my-16"></div>
 
+          {/* Non-Verbal Patterns Videos */}
           <motion.div
             initial="hidden"
             animate="visible"
-            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 1.2 } } }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { duration: 1.2 } },
+            }}
             className="w-full max-w-6xl"
           >
-            <SectionTitle title="Non-Verbal Pattern" />
+            <SectionTitle title="Non-Verbal Patterns" />
             <VideoList videos={nonVerbalPatternVideos} />
           </motion.div>
         </div>
@@ -61,7 +94,7 @@ const Lecture = () => {
   );
 };
 
-// Animated Section Title with Gradient Text
+// Section Title Component
 const SectionTitle = ({ title }) => (
   <motion.h1
     initial="hidden"
@@ -70,58 +103,47 @@ const SectionTitle = ({ title }) => (
       hidden: { opacity: 0, y: 20 },
       visible: { opacity: 1, y: 0, transition: { duration: 1.2, delay: 0.2 } },
     }}
-    className="text-5xl font-bold mb-8">
-    <motion.span
-      className="bg-gradient-to-r from-blue-500 to-green-500 bg-clip-text text-transparent"
-      initial="hidden"
-      animate="visible"
-      variants={{
-        hidden: { scale: 0.8 },
-        visible: { scale: 1, transition: { duration: 1.5, repeat: Infinity, repeatType: "reverse" } },
-      }}>
+    className="text-5xl font-bold mb-8"
+  >
+    <span className="bg-gradient-to-r from-teal-500 to-blue-500 bg-clip-text text-transparent">
       {title}
-    </motion.span>
+    </span>
   </motion.h1>
 );
 
-// Enhanced Video List with Modern Design
+// Video List Component
 const VideoList = ({ videos }) => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 px-6">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 px-6">
     {videos.map((video, index) => (
       <motion.div
         key={index}
-        className="video-card p-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transform transition-all hover:scale-105"
-        whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(0, 123, 255, 0.2)" }}>
-        
-        <div className="relative">
+        className="video-card p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-2xl transform transition-transform hover:scale-105"
+        whileHover={{ scale: 1.05 }}
+      >
+        <div className="relative group">
           <motion.video
-            className="w-full h-64 rounded-lg object-cover shadow-lg"
+            className="w-full h-56 rounded-lg object-cover shadow-lg group-hover:shadow-2xl transition-all"
             controls
             src={video.src}
             type="video/mp4"
           />
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center bg-black opacity-50 hover:opacity-0 transition-opacity duration-300">
-            <motion.div className="text-white text-4xl">▶</motion.div>
-          </motion.div>
+          {/* Video Overlay Effect */}
+          <div className="absolute top-0 left-0 w-full h-full rounded-lg bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity"></div>
         </div>
-        
         <motion.h2
-          className="text-2xl font-semibold mt-4 text-black dark:text-white hover:text-blue-500"
-          whileHover={{ color: "#007BFF" }}>
+          className="text-xl font-bold mt-4 text-gray-800 dark:text-white group-hover:text-indigo-500 transition-colors"
+          whileHover={{ color: "#5B21B6" }}
+        >
           {video.title}
         </motion.h2>
-        <motion.p
-          className="text-gray-600 mt-2 text-sm dark:text-gray-300"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}>
+        <p className="text-gray-600 mt-2 text-sm dark:text-gray-300 group-hover:text-gray-400 transition-colors">
           {video.description}
-        </motion.p>
-
+        </p>
+        {/* Action Button */}
         <motion.button
-          className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full shadow-md hover:bg-blue-700 transition-colors"
-          whileHover={{ scale: 1.05, boxShadow: "0 8px 15px rgba(0, 123, 255, 0.2)" }}>
+          className="mt-4 px-4 py-2 bg-indigo-500 text-white rounded-full shadow-md hover:bg-indigo-600 transition-transform transform hover:scale-110"
+          whileHover={{ scale: 1.1 }}
+        >
           Watch Now
         </motion.button>
       </motion.div>
@@ -129,7 +151,7 @@ const VideoList = ({ videos }) => (
   </div>
 );
 
-// Dummy Video Data for Logical Reasoning
+// Video Data
 const logicalReasoningVideos = [
   { src: vid1, title: "Introduction to Logical Reasoning", description: "Learn the basics of logical reasoning." },
   { src: vid2, title: "Advanced Logical Reasoning Techniques", description: "Explore advanced problem-solving strategies." },
@@ -137,7 +159,6 @@ const logicalReasoningVideos = [
   { src: vid4, title: "Logical Reasoning in Real Life", description: "Apply logical reasoning to real-life scenarios." },
 ];
 
-// Dummy Video Data for Non-Verbal Patterns
 const nonVerbalPatternVideos = [
   { src: vid5, title: "Introduction to Non-Verbal Patterns", description: "Basics of non-verbal patterns and techniques." },
   { src: vid6, title: "Advanced Non-Verbal Pattern Techniques", description: "Solve advanced non-verbal pattern problems." },

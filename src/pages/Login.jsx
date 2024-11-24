@@ -11,6 +11,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false); // To toggle password visibility
   const navigate = useNavigate();
 
   // Handle input change
@@ -26,6 +27,16 @@ const Login = () => {
     if (!email || !password) {
       return 'Both fields are required.';
     }
+
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+      return 'Please enter a valid email address.';
+    }
+
+    if (password.length < 6) {
+      return 'Password must be at least 6 characters long.';
+    }
+
     return null;
   };
 
@@ -51,7 +62,7 @@ const Login = () => {
       if (response.data.success) {
         setSuccess(true);
         
-        // Store JWT token and user details in local storage
+        // Store JWT token and user details in localStorage
         localStorage.setItem('authToken', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user)); // Store user data
 
@@ -69,15 +80,14 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50">
-      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center text-gray-900">Sign in to Your Account</h2>
-        <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-indigo-600 to-indigo-400">
+      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+        <h2 className="text-3xl font-semibold text-center text-gray-900 mb-6">Sign in to Your Account</h2>
+
+        <form className="space-y-6" onSubmit={handleSubmit}>
           {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email Address
-            </label>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email Address</label>
             <input
               id="email"
               name="email"
@@ -86,32 +96,39 @@ const Login = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="block w-full px-4 py-2 mt-1 text-gray-900 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300"
+              aria-label="Email"
+              className="block w-full px-4 py-3 mt-2 text-gray-900 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300"
             />
           </div>
 
           {/* Password */}
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              Password
-            </label>
+          <div className="relative">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
             <input
               id="password"
               name="password"
-              type="password"
+              type={passwordVisible ? 'text' : 'password'}
               placeholder="Enter your password"
               value={formData.password}
               onChange={handleChange}
               required
-              className="block w-full px-4 py-2 mt-1 text-gray-900 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300"
+              aria-label="Password"
+              className="block w-full px-4 py-3 mt-2 text-gray-900 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300"
             />
+            {/* Password visibility toggle */}
+            <button
+              type="button"
+              onClick={() => setPasswordVisible(!passwordVisible)}
+              className="absolute right-3 top-10 text-gray-500"
+              aria-label="Toggle password visibility"
+            >
+              {passwordVisible ? 'Hide' : 'Show'}
+            </button>
           </div>
 
           {/* Error Message */}
           {error && (
-            <div className="p-2 text-sm text-red-600 bg-red-100 rounded-md">
-              {error}
-            </div>
+            <div className="p-3 text-sm text-red-600 bg-red-100 rounded-md">{error}</div>
           )}
 
           {/* Submit Button */}
@@ -119,7 +136,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full flex justify-center px-4 py-2 text-white font-medium text-sm rounded-md ${
+              className={`w-full flex justify-center px-4 py-3 text-white font-semibold rounded-md ${
                 loading ? 'bg-indigo-300 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'
               }`}
             >
@@ -136,7 +153,7 @@ const Login = () => {
         )}
 
         {/* Register Redirect */}
-        <div className="mt-4 text-center">
+        <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
             Don't have an account?{' '}
             <Link to="/register" className="text-indigo-600 hover:text-indigo-500 font-medium">

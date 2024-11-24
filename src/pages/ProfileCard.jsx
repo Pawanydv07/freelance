@@ -107,7 +107,6 @@ const ProfilePage = () => {
   };
 
   const getRandomVariation = (baseValue) => {
-    // Random variation between -5 and +5 points around the base value
     return baseValue + (Math.random() * 10 - 5);
   };
 
@@ -124,21 +123,21 @@ const ProfilePage = () => {
     datasets: [
       {
         label: "Your Score",
-        data: yourScores, // Updated with some randomness
+        data: yourScores,
         backgroundColor: "rgba(75, 192, 192, 0.2)",
         borderColor: "rgba(75, 192, 192, 1)",
         borderWidth: 2,
         fill: true,
-        tension: 0.3, // Adds a smooth curve to the line
+        tension: 0.3,
       },
       {
         label: "Overall Students' Average",
-        data: overallAverageScores, // Updated with some randomness
+        data: overallAverageScores,
         backgroundColor: "rgba(153, 102, 255, 0.2)",
         borderColor: "rgba(153, 102, 255, 1)",
         borderWidth: 2,
         fill: true,
-        tension: 0.3, // Adds a smooth curve to the line
+        tension: 0.3,
       },
     ],
   };
@@ -153,11 +152,14 @@ const ProfilePage = () => {
     { name: "You", rank: 7, score: 35 },
   ];
 
-  const badges = ["10 Mock Tests Completed", "Top 5% in Quantitative Aptitude"];
+  const badges = [
+    "10 Mock Tests Completed 🎯",
+    "Top 5% in Quantitative Aptitude 🏅",
+  ];
   const activities = [
-    "Attempted iCAT Mock 9 - Sept 9, 2024",
-    "Reviewed Mock 8 Solutions - Sept 5, 2024",
-    "Started Quantitative Aptitude Course - Aug 30, 2024",
+    "Attempted iCAT Mock 9 - Sept 9, 2024 📅",
+    "Reviewed Mock 8 Solutions - Sept 5, 2024 🔍",
+    "Started Quantitative Aptitude Course - Aug 30, 2024 📚",
   ];
 
   const socialMediaLinks = [
@@ -171,116 +173,448 @@ const ProfilePage = () => {
     { icon: faTwitter, label: "Twitter", link: "https://www.twitter.com" },
   ];
 
-  // Additional sections for Notes and Upcoming Tests
-  const recentTests = [
-    { name: "iCAT Mock 8", date: "Aug 30, 2024", score: 78 },
-    { name: "iCAT Mock 7", date: "Aug 25, 2024", score: 85 },
-  ];
-
-  const upcomingTests = [
-    { name: "iCAT Mock 10", date: "Oct 1, 2024", time: "10:00 AM" },
-    { name: "iCAT Mock 11", date: "Oct 15, 2024", time: "2:00 PM" },
-  ];
+  // Identifying weak areas in aptitude based on the difference between user and top students' scores
+  const weakAreas = aptitudeSectionData.labels.filter((label, index) => {
+    const userScore = aptitudeSectionData.datasets[0].data[index];
+    const topStudentScore = aptitudeSectionData.datasets[1].data[index];
+    return userScore < topStudentScore - 15; // Threshold of 15 for weak areas
+  });
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-50 p-4 mt-14 max-w-full">
       {/* Header Section */}
-      <div className="w-full max-w-6xl bg-white rounded-lg shadow p-4">
-        <h1 className="text-xl font-bold text-gray-800 mb-2">
-          Hey {user ? user.displayName : "User"},
-        </h1>
-        <p className="text-sm text-gray-600">
-          Mock: <span className="font-semibold">{testName}</span>
+      <div className="w-full max-w-6xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 rounded-lg shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-4xl font-extrabold text-white tracking-tight animate__animated animate__fadeInLeft delay-1s">
+            Hey {user ? user.displayName : "User"} 👋
+          </h1>
+          <div className="flex items-center space-x-4">
+            <div className="text-lg text-white bg-blue-700 rounded-full px-6 py-3 font-semibold transform hover:scale-110 transition-all cursor-pointer">
+              <span className="text-sm">Your Status</span>
+              <span className="block text-xs">Ready for the challenge?</span>
+            </div>
+            <div className="relative">
+              <img
+                src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/000000/external-user-avatar-flaticons-lineal-color-flat-icons.png"
+                alt="User"
+                className="rounded-full w-12 h-12 border-4 border-white shadow-lg"
+              />
+              <div className="absolute -top-1 -right-1 bg-green-400 text-white rounded-full p-2 text-xs font-bold">
+                💡
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p className="text-sm text-white mb-2 animate__animated animate__fadeInLeft delay-2s">
+          <span className="font-semibold text-yellow-300">Mock:</span>{" "}
+          <span className="text-white">{testName}</span>
         </p>
-        <p className="text-sm text-gray-600">
-          Attempted On: <span className="text-blue-600">{attemptedOn}</span>
+        <p className="text-sm text-white mb-4 animate__animated animate__fadeInLeft delay-3s">
+          <span className="font-semibold text-yellow-300">Attempted On:</span>{" "}
+          <span className="text-blue-200">{attemptedOn}</span>
         </p>
+
+        <div className="flex justify-center space-x-6">
+          <div className="flex items-center text-white bg-blue-800 rounded-lg p-3 shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 cursor-pointer hover:bg-blue-600">
+            <span className="font-semibold text-2xl animate__animated animate__fadeIn animate__delay-2s">
+              🕒
+            </span>
+            <span className="ml-2 text-lg animate__animated animate__fadeIn animate__delay-2s">
+              Time Left: 30 mins
+            </span>
+          </div>
+          <div className="flex items-center text-white bg-green-700 rounded-lg p-3 shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 cursor-pointer hover:bg-green-500">
+            <span className="font-semibold text-2xl animate__animated animate__fadeIn animate__delay-2s">
+              ✅
+            </span>
+            <span className="ml-2 text-lg animate__animated animate__fadeIn animate__delay-2s">
+              Completed: 85%
+            </span>
+          </div>
+        </div>
+
+        {/* Engaging Section with Animated Reactions */}
+        <div className="w-full max-w-6xl mt-6">
+          <h2 className="text-xl font-semibold text-white mb-4 text-center">
+            💥 What's Next? 💥
+          </h2>
+          <div className="flex justify-center space-x-8">
+            <div className="text-center">
+              <div className="text-3xl text-white">
+                <span className="animate__animated animate__heartBeat animate__infinite infinite">
+                  ❤️
+                </span>
+              </div>
+              <p className="text-white text-sm mt-2">
+                Feeling good? Keep going! 💪
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl text-white">
+                <span className="animate__animated animate__shakeX animate__infinite infinite">
+                  ⚡
+                </span>
+              </div>
+              <p className="text-white text-sm mt-2">
+                Supercharge your performance! 🚀
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl text-white">
+                <span className="animate__animated animate__bounce animate__infinite infinite">
+                  🔥
+                </span>
+              </div>
+              <p className="text-white text-sm mt-2">
+                Keep up the momentum! 🔥
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Charts Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-6xl mt-4">
-        <div className="bg-white rounded-lg shadow p-4 h-2xl">
-          <h2 className="text-sm font-semibold text-center mb-2">
-            Overall Students
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl mt-6">
+        <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+          <h2 className="text-sm font-semibold text-center mb-4">
+            Overall Students 🏆
           </h2>
-          <Pie data={pieChartData} className="h-full" />
+          <Pie data={pieChartData} className="h-72" />
         </div>
-        <div className="bg-white rounded-lg shadow p-4">
-          <h2 className="text-sm font-semibold text-center mb-2">
-            Rank Comparison
+        <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+          <h2 className="text-sm font-semibold text-center mb-4">
+            Rank Comparison 📊
           </h2>
           <Line data={rankComparisonData} options={{ responsive: true }} />
         </div>
-        <div className="col-span-2 bg-white rounded-lg shadow p-4">
-          <h2 className="text-sm font-semibold text-center mb-2">
-            Aptitude Section Comparison
+        <div className="col-span-2 bg-white rounded-lg shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+          <h2 className="text-sm font-semibold text-center mb-4">
+            Aptitude Section Performance 📊
           </h2>
           <Radar data={aptitudeSectionData} options={{ responsive: true }} />
         </div>
-        <div className="col-span-2 bg-white rounded-lg shadow p-4">
-          <h2 className="text-sm font-semibold text-center mb-2">
-            Performance Trends
-          </h2>
-          <Line data={performanceTrends} options={{ responsive: true }} />
+      </div>
+
+      <div className="bg-white rounded-lg shadow-lg p-6 mt-6 w-full max-w-6xl">
+        <h2 className="text-lg font-semibold text-center mb-4 text-blue-600">
+          Leaderboard 🏅
+        </h2>
+        <ul className="list-none pl-0">
+          {leaderboard.map((item, index) => {
+            // Rank Emojis for Top 3
+            const rankEmoji =
+              index === 0
+                ? "🥇"
+                : index === 1
+                ? "🥈"
+                : index === 2
+                ? "🥉"
+                : `${index + 1}`;
+
+            // Dynamic score color: green, yellow, red
+            const scoreColor =
+              item.score >= 85
+                ? "text-green-500"
+                : item.score >= 50
+                ? "text-yellow-500"
+                : "text-red-500";
+
+            // Hover and scale effect
+            const hoverEffect =
+              "hover:bg-gray-100 hover:scale-105 transition-all duration-300 transform";
+
+            // Additional visual elements (e.g., progress bar, emojis for reaction)
+            const progressBarWidth = `${item.score}%`;
+
+            return (
+              <li
+                key={index}
+                className={`flex items-center justify-between p-4 mb-4 rounded-lg bg-gray-50 ${hoverEffect}`}
+              >
+                <div className="flex items-center space-x-4">
+                  {/* Avatar (or Placeholder) */}
+                  <img
+                    src={
+                      item.avatar ||
+                      "https://www.gravatar.com/avatar/placeholder.png"
+                    } // Default image
+                    alt={`${item.name}'s avatar`}
+                    className="w-12 h-12 rounded-full"
+                  />
+                  <div>
+                    <span className="font-semibold text-gray-800">
+                      {rankEmoji} {item.name}
+                    </span>
+                    <div className="text-sm text-gray-500">
+                      Ranked #{item.rank}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Score and Progress Bar */}
+                <div className="flex flex-col items-end">
+                  <div className="relative w-24 h-2 bg-gray-200 rounded-full mt-2">
+                    <div
+                      className={`absolute top-0 left-0 h-full ${scoreColor} rounded-full`}
+                      style={{ width: progressBarWidth }}
+                    ></div>
+                  </div>
+                  <span className={`font-bold ${scoreColor} mt-2`}>
+                    {item.score}%
+                  </span>
+                  <div className="mt-2 text-gray-500 text-xs">
+                    {item.score >= 85
+                      ? "Excellent! Keep it up 💪"
+                      : item.score >= 50
+                      ? "Good effort! Keep pushing 🚀"
+                      : "Needs improvement, keep working hard! 🔧"}
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      {/* Badges and Activities Section */}
+      <div className="bg-white rounded-lg shadow-lg p-6 mt-6 w-full max-w-6xl">
+        <h2 className="text-lg font-semibold text-center mb-4">
+          Badges & Activities 🎯
+        </h2>
+        <div className="mb-4">
+          <h3 className="text-md font-semibold">Badges</h3>
+          <ul className="list-disc pl-6">
+            {badges.map((badge, index) => (
+              <li key={index} className="text-sm text-gray-700">
+                {badge}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-md font-semibold">Recent Activities</h3>
+          <ul className="list-disc pl-6">
+            {activities.map((activity, index) => (
+              <li key={index} className="text-sm text-gray-700">
+                {activity}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
-      {/* Recent Test History */}
-      <div className="w-full max-w-6xl bg-white rounded-lg shadow p-4 mt-4">
-        <h2 className="text-sm font-semibold text-center mb-2">
-          Recent Test History
+      <div className="bg-white rounded-lg shadow-lg p-6 mt-6 w-full max-w-6xl">
+        <h2 className="text-lg font-semibold text-center mb-4">
+          Weak Areas 💥
         </h2>
-        <ul className="text-sm">
-          {recentTests.map((test, idx) => (
-            <li key={idx} className="flex justify-between p-2">
-              <span>
-                {test.name} ({test.date}) - Score: {test.score}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
+        {weakAreas.length > 0 ? (
+          weakAreas.map((area, index) => {
+            const userScore =
+              aptitudeSectionData.datasets[0].data[
+                aptitudeSectionData.labels.indexOf(area)
+              ];
+            const topStudentScore =
+              aptitudeSectionData.datasets[1].data[
+                aptitudeSectionData.labels.indexOf(area)
+              ];
+            const scoreDifference = topStudentScore - userScore;
+            const improvementNeeded =
+              scoreDifference > 15
+                ? "🚨 Major Improvement Needed"
+                : "⚠️ Needs Practice";
 
-      {/* Upcoming Tests */}
-      <div className="w-full max-w-6xl bg-white rounded-lg shadow p-4 mt-4">
-        <h2 className="text-sm font-semibold text-center mb-2">
-          Upcoming Tests
+            // To track performance trend (improvement or decline)
+            const lastTestScore = getRandomVariation(userScore); // Mocking score variation for trend
+            const scoreTrend =
+              lastTestScore > userScore
+                ? "📈 Improved"
+                : lastTestScore < userScore
+                ? "📉 Declined"
+                : "🔄 Stayed the Same";
+
+            // Color-coded severity based on score difference
+            const severityColor =
+              scoreDifference > 20
+                ? "bg-red-500"
+                : scoreDifference > 10
+                ? "bg-yellow-500"
+                : "bg-green-500";
+
+            return (
+              <div key={index} className="mb-4 p-4 bg-gray-100 rounded-lg">
+                <h3 className="font-semibold text-gray-800">{area} 🧠</h3>
+                <div className="flex items-center justify-between mt-2">
+                  <div>
+                    <p className="text-sm text-gray-600">
+                      Your Score:{" "}
+                      <span className="font-semibold">{userScore}%</span> 🎯
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Top Score:{" "}
+                      <span className="font-semibold">{topStudentScore}%</span>{" "}
+                      🏆
+                    </p>
+                  </div>
+                  <div className={`text-sm font-semibold ${severityColor}`}>
+                    {improvementNeeded}
+                  </div>
+                </div>
+
+                {/* Progress Bar */}
+                <div className="mt-4">
+                  <p className="text-sm text-gray-600">Progress to Top: </p>
+                  <div className="w-full bg-gray-200 rounded-full h-2.5">
+                    <div
+                      className="h-2.5 rounded-full"
+                      style={{
+                        width: `${(userScore / topStudentScore) * 100}%`,
+                        backgroundColor:
+                          severityColor === "bg-red-500"
+                            ? "#F44336"
+                            : severityColor === "bg-yellow-500"
+                            ? "#FFEB3B"
+                            : "#4CAF50",
+                      }}
+                    ></div>
+                  </div>
+                </div>
+
+                {/* Performance Trend */}
+                <div className="mt-4">
+                  <p className="text-sm text-gray-600">
+                    Performance Trend:{" "}
+                    <span className="font-semibold">{scoreTrend}</span>
+                  </p>
+                  <div className="h-2 bg-gray-200 rounded-full mt-2">
+                    <div
+                      className={`h-2 rounded-full ${
+                        scoreTrend === "📈 Improved"
+                          ? "bg-green-500"
+                          : scoreTrend === "📉 Declined"
+                          ? "bg-red-500"
+                          : "bg-yellow-500"
+                      }`}
+                      style={{
+                        width: `${(lastTestScore / topStudentScore) * 100}%`,
+                      }}
+                    ></div>
+                  </div>
+                </div>
+
+                {/* Recommendations */}
+                <div className="mt-4">
+                  <p className="text-sm text-gray-600">Recommendations 📝:</p>
+                  <ul className="list-disc pl-6">
+                    {area === "Reasoning" && (
+                      <li className="text-sm text-gray-700">
+                        🧩 Practice reasoning puzzles and logic-based questions.
+                      </li>
+                    )}
+                    {area === "Mathematics" && (
+                      <li className="text-sm text-gray-700">
+                        📚 Revise core concepts of algebra and calculus.
+                      </li>
+                    )}
+                    {area === "English" && (
+                      <li className="text-sm text-gray-700">
+                        📖 Read daily to improve vocabulary and comprehension
+                        skills.
+                      </li>
+                    )}
+                    {area === "Data Interpretation" && (
+                      <li className="text-sm text-gray-700">
+                        📊 Work on data analysis and interpretation exercises.
+                      </li>
+                    )}
+                    {area === "Quantitative Aptitude" && (
+                      <li className="text-sm text-gray-700">
+                        🔢 Focus on problem-solving techniques and speed drills.
+                      </li>
+                    )}
+                    {area === "Logical Ability" && (
+                      <li className="text-sm text-gray-700">
+                        🧠 Practice logical reasoning with timed tests.
+                      </li>
+                    )}
+                  </ul>
+                </div>
+
+                {/* Resources */}
+                <div className="mt-4">
+                  <p className="text-sm text-gray-600">Helpful Resources 📚:</p>
+                  <ul className="list-disc pl-6">
+                    <li className="text-sm text-blue-600">
+                      <a
+                        href="https://www.coursera.org"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        🎓 Coursera - Logical Reasoning Course
+                      </a>
+                    </li>
+                    <li className="text-sm text-blue-600">
+                      <a
+                        href="https://www.khanacademy.org/math"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        📘 Khan Academy - Math Tutorials
+                      </a>
+                    </li>
+                    <li className="text-sm text-blue-600">
+                      <a
+                        href="https://www.edx.org"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        🎥 edX - Data Interpretation Workshops
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <p className="text-sm text-gray-700">No weak areas identified 💪🎉</p>
+        )}
+
+        {/* Button to navigate to ChatPage */}
+        {weakAreas.length > 0 && (
+          <div className="mt-4 text-center">
+            <Link
+              to="/chat/:mode"
+              className="inline-block bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300"
+            >
+              💬 Chat About Weak Areas
+            </Link>
+          </div>
+        )}
+      </div>
+      {/* Social Media Links */}
+      <div className="w-full max-w-6xl bg-white rounded-lg shadow-lg p-6 mt-6">
+        <h2 className="text-lg font-semibold text-center mb-4">
+          Connect with Us 🌍
         </h2>
-        <ul className="text-sm">
-          {upcomingTests.map((test, idx) => (
-            <li key={idx} className="flex justify-between p-2">
-              <span>
-                {test.name} ({test.date}) - Time: {test.time}
-              </span>
-            </li>
+        <div className="flex justify-center space-x-6">
+          {socialMediaLinks.map((link, index) => (
+            <a
+              key={index}
+              href={link.link}
+              className="text-gray-700 hover:text-blue-500 transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={link.icon} size="2x" />
+            </a>
           ))}
-        </ul>
+        </div>
       </div>
-
-      {/* Footer Actions */}
-      <div className="w-full max-w-4xl mt-4 flex justify-between">
-        <Link
-          to="/aipage"
-          className="bg-blue-500 text-white text-sm py-2 px-4 rounded shadow hover:bg-blue-600 transition"
-        >
-          Analyze Mock Solutions
-        </Link>
-        <button className="bg-gray-800 text-white text-sm py-2 px-4 rounded shadow hover:bg-gray-900 transition">
-          Track Errors
-        </button>
-        <button className="bg-yellow-500 text-white text-sm py-2 px-4 rounded shadow hover:bg-yellow-600 transition">
-          Check B-Schools
-        </button>
-      </div>
-
-      {/* Social Media Icons */}
-      <div className="flex justify-center space-x-6 mt-6">
-        {socialMediaLinks.map((social, idx) => (
-          <a key={idx} href={social.link} target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={social.icon} className="text-xl text-gray-800 hover:text-blue-500" />
-          </a>
-        ))}
-      </div>
+      {/* Logout */}
+      <Link to="/login" className="text-blue-600 text-sm mt-6 hover:underline">
+        Logout
+      </Link>
     </div>
   );
 };

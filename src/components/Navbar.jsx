@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import logo from "../assets/logonew.jpg"; // Import the logo image
+import axios from "axios";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,13 +15,15 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  // Simulate login (you can replace this with your actual login mechanism)
+  // Handle login
   const handleLogin = (e, email, password) => {
     e.preventDefault();
     if (email && password) {
+      // Simulate user info from email (you would replace this with actual login API logic)
       const userData = { displayName: email.split("@")[0], email };
-      setUser(userData); // Simulate user info from email
+      setUser(userData);
       localStorage.setItem('user', JSON.stringify(userData)); // Store user info in localStorage
+      localStorage.setItem('authToken', 'dummyToken'); // Store token (replace with real token)
     } else {
       console.log("Invalid credentials");
     }
@@ -30,25 +33,22 @@ const Navbar = () => {
   const handleLogout = () => {
     setUser(null); // Clear user state
     localStorage.removeItem('user'); // Remove user data from localStorage
+    localStorage.removeItem('authToken'); // Remove token
     navigate("/"); // Navigate to home page
   };
 
-  // UseEffect to get user data from localStorage when the component mounts
+  // Fetch user data from localStorage or verify JWT token on page load
   useEffect(() => {
-    // Get the user data from localStorage if logged in
     const storedUser = localStorage.getItem('user');
-  
-    if (storedUser) {
-      try {
-        // Safely parse storedUser only if it exists and is valid
-        setUser(JSON.parse(storedUser)); // Set user data if available
-      } catch (error) {
-        console.error("Error parsing user data from localStorage:", error);
-      }
+    const token = localStorage.getItem('authToken');
+
+    if (token && storedUser) {
+      // If token exists, fetch the user data and set user state
+      setUser(JSON.parse(storedUser));
     } else {
-      setUser(null); // If no user data in localStorage, set user to null
+      setUser(null); // Clear user state if no token or user data
     }
-  }, []); // Empty dependency array ensures this effect runs once on mount
+  }, []);
 
   return (
     <nav className="bg-customBlue fixed w-full z-10 top-0 shadow-lg">
@@ -75,7 +75,7 @@ const Navbar = () => {
             ) : (
               <Menu as="div" className="relative">
                 <Menu.Button className="text-white px-3 py-2 rounded-md text-sm font-medium flex items-center">
-                  {user.displayName || user.email}
+                  {user?.displayName || user?.email}
                   <ChevronDownIcon className="h-5 w-5 ml-2" />
                 </Menu.Button>
                 <Transition
@@ -162,7 +162,7 @@ const Navbar = () => {
           ) : (
             <Menu as="div" className="relative">
               <Menu.Button className="text-white block w-full text-left px-3 py-2 rounded-md text-base font-medium flex items-center">
-                {user.displayName || user.email}
+                {user?.displayName || user?.email}
                 <ChevronDownIcon className="h-5 w-5 ml-2" />
               </Menu.Button>
               <Transition
