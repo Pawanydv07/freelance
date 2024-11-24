@@ -78,7 +78,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-400 bg-[length:400%_400%] animate-gradient-bg">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-400 bg-[length:400%_400%] animate-gradient-bg mt-8">
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
         <h2 className="text-3xl font-semibold text-center text-gray-900 mb-6">
           Sign in to Your Account 🎉

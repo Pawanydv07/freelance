@@ -51,15 +51,15 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-customBlue fixed w-full z-10 top-0 shadow-lg">
+    <nav className="bg-customBlue fixed w-full z-10 top-0 shadow-lg h-20">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-10">
+        <div className="flex items-center justify-between h-full"> {/* Changed from h-10 to h-full */}
           <div className="flex items-center">
             <Link to="/">
-              <img src={logo} alt="LogicalSir Logo" className="h-16 w-20" />
+              <img src={logo} alt="LogicalSir Logo" className="h-12 w-16 rounded-xl mt-[10px]" />
             </Link>
           </div>
-          <div className="hidden md:flex">
+          <div className="hidden md:flex items-center mt-2"> {/* Added items-center to center vertically */}
             <Link to="/" className="text-white px-3 py-2 rounded-md text-sm font-medium">Home</Link>
             <Link to="/instructors" className="text-white px-3 py-2 rounded-md text-sm font-medium">Instructor</Link>
             <Link to="/courses" className="text-white px-3 py-2 rounded-md text-sm font-medium">Courses</Link>
