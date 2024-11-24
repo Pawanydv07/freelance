@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../../css/Home/HomeP6.css'; // Import the CSS file for styling
 import photo1 from '../../assets/photo1.jpg';
 import photo2 from '../../assets/photo2.jpg';
 import default2 from '../../assets/photo1.jpg';

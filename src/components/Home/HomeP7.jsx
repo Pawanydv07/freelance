@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../css/Home/HomeP7.css'; // Import the CSS file for styling
 
 // Assuming images are placed in `../../assets` directory
 import event1 from '../../assets/photo3.jpg';

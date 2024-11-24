@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaTwitter, FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa';
 import manImage from '../assets/man.jpg'; // Adjust the path if necessary
-import '../css/Pages/team.module.css';
+
 
 const teamMembers = [
   {

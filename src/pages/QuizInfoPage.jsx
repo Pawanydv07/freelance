@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Draggable from 'react-draggable';
-import '../css/QuizInfoPage.css';
 import { FaCamera, FaExclamationTriangle, FaUser, FaInfoCircle } from 'react-icons/fa';
 
 const QuizInfoPage = () => {

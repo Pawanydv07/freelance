@@ -3,14 +3,10 @@ import { motion } from "framer-motion";
 import sliderimage1 from "../assets/photo1.jpg";
 import sliderimage2 from "../assets/photo2.jpg";
 import sliderimage3 from "../assets/photo3.jpg";
-import "../css/Home.css";
-import "../css/Home/Home.css";
 import HomeP1 from "../components/Home/HomeP1";
 import HomeP2 from "../components/Home/HomeP2";
 import HomeP3 from "../components/Home/HomeP3";
 import HomeP4 from "../components/Home/HomeP4";
-import HomeP5 from "../components/Home/HomeP5";
-import HomeP6 from "../components/Home/HomeP6";
 import HomeP7 from "../components/Home/HomeP7";
 import HomeP11 from "../components/Home/HomeP11";
 import HomeP10 from "../components/Home/HomeP10";
@@ -89,32 +85,8 @@ export const Home = () => {
         variants={sectionVariants}
         className="section"
       >
-        <HomeP5 />
-      </motion.div>
-      {/* Uncomment and add animations for additional sections as needed */}
-      {/* <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={sectionVariants}
-        className="section"
-      >
-        <HomeP6 />
-      </motion.div>
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={sectionVariants}
-        className="section"
-      >
-        <HomeP7 />
-      </motion.div> */}
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={sectionVariants}
-        className="section"
-      >
-        <HomeP11 />
+      
+       
       </motion.div>
       <motion.div
         initial="hidden"

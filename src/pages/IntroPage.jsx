@@ -1,7 +1,7 @@
 // src/components/IntroPage.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../css/intro.css";
+
 
 const IntroPage = () => {
   const navigate = useNavigate();

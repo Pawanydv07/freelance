@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../css/Home/HomeP1.css";
+
 
 const HomeP1 = ({ slides }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
